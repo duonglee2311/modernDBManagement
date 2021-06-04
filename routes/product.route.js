@@ -4,6 +4,6 @@ const router=express.Router();
 
 router.get('/',controller.getProduct);
 router.get('/edit',controller.editProduct);
-router.get('/edit/:id',controller.detailProduct);
+// router.get('/edit?id',controller.detailProduct);
 
 module.exports = router;

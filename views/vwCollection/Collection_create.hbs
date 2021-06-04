@@ -41,7 +41,7 @@
 	}
      
     .collection-img{
-        width: 210px;
+        width: 100%;
     }
 </style>
 
@@ -53,7 +53,6 @@
 				<h2 class="text-center">Tạo mới bộ sưu tập</h2>
 			</div>
 		</div>
-        {{!-- gughghghggh --}}
 		<div class="col-md-9">
 			<div class="collection-form">
 				<div class="form-group">
@@ -63,26 +62,21 @@
 				  </div>
 				</div>
 				<div class="form-group">
-				  <label class="control-label col-sm-2" for="lname">Last Name:</label>
+				  <label class="control-label col-sm-2" for="collection_thumb">Link ảnh:</label>
 				  <div class="col-sm-10">          
-					<input type="text" class="form-control" id="lname" placeholder="Enter Last Name" name="lname">
+					<input type="text" class="form-control" id="collection_thumb" placeholder="Link ảnh" name="collection_thumb">
 				  </div>
 				</div>
 				<div class="form-group">
-				  <label class="control-label col-sm-2" for="email">Email:</label>
+				  <label class="control-label col-sm-2" for="desc">Mô tả:</label>
 				  <div class="col-sm-10">
-					<input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-				  </div>
-				</div>
-				<div class="form-group">
-				  <label class="control-label col-sm-2" for="comment">Comment:</label>
-				  <div class="col-sm-10">
-					<textarea class="form-control" rows="5" id="comment"></textarea>
+					<textarea class="form-control" rows="5" id="desc"></textarea>
 				  </div>
 				</div>
 				<div class="form-group">        
 				  <div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default">Submit</button>
+					<button type="submit" class="btn btn-default">Lưu</button>
+					<a href="/collection" class="btn btn-dark float-right">Danh sách</a>
 				  </div>
 				</div>
 			</div>

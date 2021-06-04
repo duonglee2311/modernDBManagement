@@ -34,7 +34,7 @@ module.exports={
     //Lấy dữ liệu từ key field: => value
     hget: (key,field)=>{
         const query= util.promisify(client.HGET).bind(client);
-        return query(key,value);
+        return query(key,field);
     },
     // tăng giá trị của key field => value +incValue
     hincrby: (key,field,incValue)=>{

@@ -9,12 +9,12 @@ module.exports={
         //- cập nhật số lượng tại detail ds giỏ hàng
 
        let userid=123;
-       let productid=456;
+       let productid=4567;
        let incrValue=req.params.value;
-       let detail={ name: "sách", image: "../public/image", quantity: 2,price:23000 };
+       let detail={ name: "sách1", image: "../public/image", quantity: 2,price:23000, idSeller: 369, nameSeller: "duong" };
         //Thêm sản phẩm
         console.log("thêm: ",await cartModel.addCart(userid,productid,detail));
-        // console.log('show: ',await cartModel.showCart(userid,productid));
+        console.log('show: ',await cartModel.showCart(userid));
         //done: trả về OK
         //fail: trả về 0
         // if fail

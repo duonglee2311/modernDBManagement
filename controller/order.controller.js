@@ -1,7 +1,8 @@
-// const cartModel = require('../model/cart.model')
+const orderModel = require('../model/order.model')
 module.exports={
     //GET: /order
     getOrder: async(req,res)=>{
+        orderModel.setOrder(123,'value')
         if(req.query.id != null){
             res.render("vwOrder/Order_detail")
         }

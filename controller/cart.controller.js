@@ -10,7 +10,8 @@ module.exports={
 
        let userid=123;
        let productid=456;
-       let detail={ name: "sách", image: "../public/image", quantity: 1,price:23000 };
+       let incrValue=req.params.value;
+       let detail={ name: "sách", image: "../public/image", quantity: 2,price:23000 };
         //Thêm sản phẩm
         console.log("thêm: ",await cartModel.addCart(userid,productid,detail));
         // console.log('show: ',await cartModel.showCart(userid,productid));
@@ -20,7 +21,7 @@ module.exports={
         // update sản phẩm
 
         // console.log("xem data\n",await cartModel.showCart());
-        console.log("update: ", await cartModel.updateCart(userid,productid,-1));
+        console.log("update: ", await cartModel.updateCart(userid,productid,1));
         res.render("vwCart/Cart")
     },
     updateCart: async(req,res)=>{

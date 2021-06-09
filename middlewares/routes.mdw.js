@@ -11,4 +11,5 @@ module.exports=function(app){
     app.get('/login',auth.login);
     app.get('/register',auth.sign_up);
     app.get('/find_pass',auth.find_pass);
+    app.use('/order',require('../routes/order.route'));
 }

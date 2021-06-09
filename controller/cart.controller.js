@@ -32,6 +32,10 @@ module.exports={
     },
     deleteCart: async(req,res)=>{
         res.send("OK");
+    },
+    //GET: /cart/checkout
+    checkout: async(req, res)=>{
+        res.render("vwCart/Checkout");
     }
 
 }

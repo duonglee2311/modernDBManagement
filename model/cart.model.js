@@ -31,6 +31,7 @@ module.exports={
         for (const element of listProduct) {
             let cartKeyProduct='Cart:'+userid+':'+element;
             const item=await db.hgetall(cartKeyProduct);
+            item.id=element;
             // console.log(item);
             list.push(item); 
         };
@@ -40,25 +41,40 @@ module.exports={
         },
         async updateCart(userid, productid,value){
             let cartKeyProduct='Cart:'+userid+':'+productid;
-            console.log("voo roi")
             //value là giá trị số lượng thay đổi
             //giảm với value <0
             //- nếu tăng nếu value>0
             let isEmptyQuantity= await db.hget(cartKeyProduct,"quantity");
-            console.log(isEmptyQuantity);
             if(isEmptyQuantity<=1){
                 // xoá sản phẩm: trả về 1: thành công; 0: không thành công
-                return this.deleteCart(userid,productid);
+                return this.deleteItemCart(userid,productid);
                 
             }
             else{
                 return await db.hincrby(cartKeyProduct,'quantity',value);
             }
         },
-    async deleteCart (userid,productid){
+    async deleteItemCart (userid,productid){
         let cartKey='Cart:'+userid;
         let cartKeyProduct='Cart:'+userid+':'+productid;
         return  await db.srem(cartKey,productid) &&  await db.del(cartKeyProduct);
+    },
+    async deleteCart(userid){
+        try {
+            let cartKey='Cart:'+userid;
+            let listProduct=await db.smembers(cartKey);
+            await db.del(cartKey);
+            listProduct.forEach(async(productid) => {
+                let cartKeyProduct='Cart:'+userid+':'+productid;
+                await db.del(cartKeyProduct);
+            });
+            console.log("đã làm")
+            return 1;
+        } catch (error) {
+            console.log('Error at: model/deleteCart.js',error);
+            return -1;
+        }
+        
     },
     
 };

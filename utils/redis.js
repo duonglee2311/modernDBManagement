@@ -1,7 +1,6 @@
-const { query } = require("express");
 const redis =require("redis");
 const util =require('util');
-const { showCart } = require("../model/cart.model");
+
 
 const client = redis.createClient();
 // const pool_query = util.promisify(client);

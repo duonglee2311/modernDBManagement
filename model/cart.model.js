@@ -24,7 +24,7 @@ module.exports={
         let listProduct=await db.smembers(cartKey);
         console.log("ds san pham:",listProduct);
         // nếu không giỏ hàng không có sản phẩm (không tồn tại) => return -1
-        if(length(listProduct)==0)
+        if((listProduct.length)==0)
             return -1;
         // lấy thông tin cụ thể của từng sp trong cart
         let list=[]

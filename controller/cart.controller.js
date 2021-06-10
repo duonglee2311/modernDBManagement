@@ -13,7 +13,7 @@ module.exports={
        let detail={ name: "sách", image: "../public/image", quantity: 1,price:23000 };
         //Thêm sản phẩm
         console.log("thêm: ",await cartModel.addCart(userid,productid,detail));
-        // console.log('show: ',await cartModel.showCart(userid,productid));
+        console.log('show: ',await cartModel.showCart(userid,productid));
         //done: trả về OK
         //fail: trả về 0
         // if fail

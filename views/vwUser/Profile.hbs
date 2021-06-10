@@ -4,9 +4,20 @@
     #edit_user{
         margin: 10px 20px;
     }
+    .img_thumb{
+      width:200px;
+      height: 200px;
+      overflow: hidden;
+    }
+    #img_thumb_{
+      width:100%;
+    }
 </style>
+<div class="img_thumb">
+  <img src="{{user.avatar}}" alt="" id="img_thumb_">
+</div>
 
-<form id="edit_user" method="POST" action="">
+<form id="edit_user" method="POST" action="/user/edit/{{user.userID}}">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="username">Username</label>
@@ -24,7 +35,7 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="phoneNumber">Số điện thoại</label>
-      <input type="text" class="form-control" id="phoneNumber" value="{{user.phonenum}}" name="phoneNumber">
+      <input type="text" class="form-control" id="phoneNumber" value="{{user.phoneNumber}}" name="phoneNumber">
     </div>
     <div class="form-group col-md-2">
       <label for="gender">Giới tính</label>

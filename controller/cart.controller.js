@@ -9,7 +9,7 @@ module.exports={
         //- cập nhật số lượng tại detail ds giỏ hàng
 
        let userid=123;
-       let productid=4567;
+       let productid=4563;
        let incrValue=req.params.value;
        let detail={ name: "sách1", image: "../public/image", quantity: 2,price:23000, idSeller: 369, nameSeller: "duong" };
         //Thêm sản phẩm
@@ -33,9 +33,7 @@ module.exports={
     deleteCart: async(req,res)=>{
         res.send("OK");
     },
-    //GET: /cart/checkout
-    checkout: async(req, res)=>{
-        res.render("vwCart/Checkout");
-    }
+
+    
 
 }

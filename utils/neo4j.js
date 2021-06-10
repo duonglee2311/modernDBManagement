@@ -6,10 +6,7 @@ var driver = neo4j.driver(
     neo4j.auth.basic('admin','123456')
   );
 
-var session =driver.session({
-    database: 'demo',
-}
-);
+let session =driver.session({database: 'demo',});
 //select {} from {} where {}
 
 // const neo_query= util.promisify(session.run).bind();
@@ -39,6 +36,9 @@ module.exports={
         }
         return session.run(`MATCH (p: ${nodeLabel} {name: “Jennifer”}) SET p.birthday = date(“1999-01-01”)`);
     },
+    matchNode:(nodeList,expression, results)=>{
+        return session.run(`MATCH ${nodeList} WHERE ${expression} RETURN ${results}`);  
+    }
 }
 
 // deleteNode:(nodeLabel,nodeValue)=>{

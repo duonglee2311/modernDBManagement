@@ -21,14 +21,28 @@ module.exports = function (app) {
         if(!operators[operator]){
           throw new Error("Handlerbars Helper 'compare' doesn't know the operator " + operator);
         }
-        // else if (arguments.length < 2){
-        //   throw new Error("Handlerbars Helper 'compare' needs 2 parameters and 1 operator");
-        // }
         var res = operators[operator](a,b);
         if(res){
           return options.fn(this);
         }
         return options.inverse(this);
+      },
+      isLogin: (user) => {
+        if(user != null){
+          return true;
+        }
+        return false;
+      },
+      show_gender: (gender, user_gender) => {
+        output = 'selected'
+        if(gender === user_gender){
+            return output;
+        }
+      },
+      sum: (a,b) =>{
+        // console.log("davao");
+        // console.log(req.session.user);
+        return a+b;
       }
     }
   }));

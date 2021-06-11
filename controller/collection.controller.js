@@ -14,6 +14,4 @@ module.exports={
     createCollection: async(req, res) =>{
         res.render("vwCollection/Collection_create");
     },
-    
-    
 }

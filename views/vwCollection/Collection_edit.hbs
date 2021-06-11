@@ -24,6 +24,14 @@
         vertical-align: baseline;
     }
 
+    .shopping-cart-wrap,
+    thead,
+    tbody,
+    tr {
+        display: block;
+        width: 100%;
+    }
+
     .shopping-cart-wrap .price {
         color: #007bff;
         font-size: 18px;
@@ -55,318 +63,100 @@
         display: flex;
         justify-content: space-between;
     }
+    .product_thumb{
+        width: 20%;
+    }
+    .product_thumb img{
+        width: 100%;
+        height: auto;
+    }
+    .product_name{
+        width: 50%;
+    }
+    .product_price{
+        width: 13%;
+    }
+    .action{
+        width: 17%;
+    }
 </style>
 
 
 
 <div class="edit_collection">
     <h3>Chỉnh sửa bộ sưu tập</h3>
-    <a href="/collection" class="btn btn-primary">Danh sách bộ sưu tập</a>    
+    <a href="/collection" class="btn btn-primary">Danh sách bộ sưu tập</a>
 </div>
-<form class="row">
+<form class="row" method="POST">
     <div class="form-group col-md-10">
         <label for="collection_name" style="font-size: 18px; padding: 10px 10px;">Tên bộ sưu tập</label>
-        <input type="email" class="form-control " id="collection_name" placeholder="Tên bộ sưu tập">
+        <input type="email" class="form-control " id="collection_name" name="nameCollection"
+            value="{{collection.nameCollection}}">
     </div>
     <input type="submit" value="Cập nhật" class="btn btn-primary col-md-2" style="height: 40px; margin-top: 53px;">
 </form>
 <div class="row">
-<div class="col-md-6">
-    <h3>Danh sách sản phẩm trong bộ sưu tập</h3>
-    <div class="card">
-        <table class="table table-hover shopping-cart-wrap">
-            <thead class="text-muted">
-                <tr>
-                    <th scope="col">Tên sản phẩm</th>
-                    <th scope="col" width="120">Số lượng</th>
-                    <th scope="col" width="120">Giá cả</th>
-                    <th scope="col" width="200" class="text-right">Hành động</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <figure class="media">
-                            <div class="img-wrap"><img
-                                    src="https://salt.tikicdn.com/cache/280x280/ts/product/f2/43/7d/de670c91bcdf9bd974f3f8c72a5e0e71.jpg"
-                                    class="img-thumbnail img-sm"></div>
-                            <figcaption class="media-body">
-                                <h6 class="title text-truncate">Product name goes here </h6>
-                                <dl class="param param-inline small">
-                                    <dt>Size: </dt>
-                                    <dd>XXL</dd>
-                                </dl>
-                                <dl class="param param-inline small">
-                                    <dt>Color: </dt>
-                                    <dd>Orange color</dd>
-                                </dl>
-                            </figcaption>
-                        </figure>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control">
-                    </td>
-                    <td>
-                        <div class="price-wrap">
-                            <var class="price">USD 145</var>
-                            <small class="text-muted">(USD5 each)</small>
-                        </div> <!-- price-wrap .// -->
-                    </td>
-                    <td class="text-right">
-                        <a href="" class="btn btn-outline-danger"> × Xóa</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <figure class="media">
-                            <div class="img-wrap"><img
-                                    src="https://salt.tikicdn.com/cache/280x280/ts/product/f2/43/7d/de670c91bcdf9bd974f3f8c72a5e0e71.jpg"
-                                    class="img-thumbnail img-sm"></div>
-                            <figcaption class="media-body">
-                                <h6 class="title text-truncate">Product name goes here </h6>
-                                <dl class="param param-inline small">
-                                    <dt>Size: </dt>
-                                    <dd>XXL</dd>
-                                </dl>
-                                <dl class="param param-inline small">
-                                    <dt>Color: </dt>
-                                    <dd>Orange color</dd>
-                                </dl>
-                            </figcaption>
-                        </figure>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control">
-
-                    </td>
-                    <td>
-                        <div class="price-wrap">
-                            <var class="price">USD 35</var>
-                            <small class="text-muted">(USD10 each)</small>
-                        </div> <!-- price-wrap .// -->
-                    </td>
-                    <td class="text-right">
-                        <a href="" class="btn btn-outline-danger btn-round"> × Xóa</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <figure class="media">
-                            <div class="img-wrap"><img
-                                    src="https://salt.tikicdn.com/cache/280x280/ts/product/f2/43/7d/de670c91bcdf9bd974f3f8c72a5e0e71.jpg"
-                                    class="img-thumbnail img-sm"></div>
-                            <figcaption class="media-body">
-                                <h6 class="title text-truncate">Product name goes here </h6>
-                                <dl class="param param-inline small">
-                                    <dt>Size: </dt>
-                                    <dd>XXL</dd>
-                                </dl>
-                                <dl class="param param-inline small">
-                                    <dt>Color: </dt>
-                                    <dd>Orange color</dd>
-                                </dl>
-                            </figcaption>
-                        </figure>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control">
-                    </td>
-                    <td>
-                        <div class="price-wrap">
-                            <var class="price">USD 45</var>
-                            <small class="text-muted">(USD15 each)</small>
-                        </div> <!-- price-wrap .// -->
-                    </td>
-                    <td class="text-right">
-                        <a href="" class="btn btn-outline-danger btn-round"> × Xóa</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="col-md-6">
+        <h3>Danh sách sản phẩm trong bộ sưu tập</h3>
+        <div class="card">
+            <table class="table table-hover shopping-cart-wrap">
+                <thead class="text-muted">
+                    <tr>
+                        <th scope="col" class="product_thumb">Ảnh sản phẩm</th>
+                        <th scope="col" class="product_name">Tên sản phẩm</th>
+                        <th scope="col" class="product_price">Giá cả</th>
+                        <th scope="col" class="text-right action">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each productsInCollection}}
+                    <tr>
+                        <td class="product_thumb"><img src="{{this.img_thumb}}" alt=""></td>
+                        <td class="product_name">
+                            <p>{{this.nameProduct}}</p>
+                        </td>
+                        <td class="product_price">
+                            <p>{{this.price}} USD</p>
+                        </td>
+                        <td class="text-right action">
+                            <a href="/collection/delProduct?id_collection={{../collection._id}}&id_product={{this._id}}&nameProduct={{this.nameProduct}}&img_thumb={{this.img_thumb}}&price={{this.price}}" class="btn btn-outline-danger"> × Xóa</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
     </div>
+    <div class="col-md-6">
+        <h3>Danh sách sản phẩm trong kho</h3>
+        <div class="card">
+            <table class="table table-hover shopping-cart-wrap">
+                <thead class="text-muted">
+                    <tr>
+                        <th scope="col" class="product_thumb">Ảnh sản phẩm</th>
+                        <th scope="col" class="product_name">Tên sản phẩm</th>
+                        <th scope="col" class="product_price">Giá cả</th>
+                        <th scope="col" class="text-right action">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each products}}
+                    <tr>
+                        <td class="product_thumb"><img src="{{this.img_thumb}}" alt=""></td>
+                        <td class="product_name">
+                            <p>{{this.nameProduct}}</p>
+                        </td>
+                        <td class="product_price">
 
-</div>
-
-
-
-<div class="col-md-6">
-    <h3>Danh sách sản phẩm trong kho</h3>
-    <div class="card">
-        <table class="table table-hover shopping-cart-wrap">
-            <thead class="text-muted">
-                <tr>
-                    <th scope="col">Tên sản phẩm</th>
-                    <th scope="col" width="120">Số lượng</th>
-                    <th scope="col" width="120">Giá cả</th>
-                    <th scope="col" width="200" class="text-right">Hành động</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <figure class="media">
-                            <div class="img-wrap"><img
-                                    src="https://salt.tikicdn.com/cache/280x280/ts/product/f2/43/7d/de670c91bcdf9bd974f3f8c72a5e0e71.jpg"
-                                    class="img-thumbnail img-sm"></div>
-                            <figcaption class="media-body">
-                                <h6 class="title text-truncate">Product name goes here </h6>
-                                <dl class="param param-inline small">
-                                    <dt>Size: </dt>
-                                    <dd>XXL</dd>
-                                </dl>
-                                <dl class="param param-inline small">
-                                    <dt>Color: </dt>
-                                    <dd>Orange color</dd>
-                                </dl>
-                            </figcaption>
-                        </figure>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control">
-                    </td>
-                    <td>
-                        <div class="price-wrap">
-                            <var class="price">USD 145</var>
-                            <small class="text-muted">(USD5 each)</small>
-                        </div> <!-- price-wrap .// -->
-                    </td>
-                    <td class="text-right">
-                        <a href="" class="btn btn-outline-primary"> + Thêm</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <figure class="media">
-                            <div class="img-wrap"><img
-                                    src="https://salt.tikicdn.com/cache/280x280/ts/product/f2/43/7d/de670c91bcdf9bd974f3f8c72a5e0e71.jpg"
-                                    class="img-thumbnail img-sm"></div>
-                            <figcaption class="media-body">
-                                <h6 class="title text-truncate">Product name goes here </h6>
-                                <dl class="param param-inline small">
-                                    <dt>Size: </dt>
-                                    <dd>XXL</dd>
-                                </dl>
-                                <dl class="param param-inline small">
-                                    <dt>Color: </dt>
-                                    <dd>Orange color</dd>
-                                </dl>
-                            </figcaption>
-                        </figure>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control">
-
-                    </td>
-                    <td>
-                        <div class="price-wrap">
-                            <var class="price">USD 35</var>
-                            <small class="text-muted">(USD10 each)</small>
-                        </div> <!-- price-wrap .// -->
-                    </td>
-                    <td class="text-right">
-                        <a href="" class="btn btn-outline-primary btn-round"> + Thêm</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <figure class="media">
-                            <div class="img-wrap"><img
-                                    src="https://salt.tikicdn.com/cache/280x280/ts/product/f2/43/7d/de670c91bcdf9bd974f3f8c72a5e0e71.jpg"
-                                    class="img-thumbnail img-sm"></div>
-                            <figcaption class="media-body">
-                                <h6 class="title text-truncate">Product name goes here </h6>
-                                <dl class="param param-inline small">
-                                    <dt>Size: </dt>
-                                    <dd>XXL</dd>
-                                </dl>
-                                <dl class="param param-inline small">
-                                    <dt>Color: </dt>
-                                    <dd>Orange color</dd>
-                                </dl>
-                            </figcaption>
-                        </figure>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control">
-                    </td>
-                    <td>
-                        <div class="price-wrap">
-                            <var class="price">USD 45</var>
-                            <small class="text-muted">(USD15 each)</small>
-                        </div> <!-- price-wrap .// -->
-                    </td>
-                    <td class="text-right">
-                        <a href="" class="btn btn-outline-primary btn-round"> + Thêm</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <figure class="media">
-                            <div class="img-wrap"><img
-                                    src="https://salt.tikicdn.com/cache/280x280/ts/product/f2/43/7d/de670c91bcdf9bd974f3f8c72a5e0e71.jpg"
-                                    class="img-thumbnail img-sm"></div>
-                            <figcaption class="media-body">
-                                <h6 class="title text-truncate">Product name goes here </h6>
-                                <dl class="param param-inline small">
-                                    <dt>Size: </dt>
-                                    <dd>XXL</dd>
-                                </dl>
-                                <dl class="param param-inline small">
-                                    <dt>Color: </dt>
-                                    <dd>Orange color</dd>
-                                </dl>
-                            </figcaption>
-                        </figure>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control">
-                    </td>
-                    <td>
-                        <div class="price-wrap">
-                            <var class="price">USD 45</var>
-                            <small class="text-muted">(USD15 each)</small>
-                        </div> <!-- price-wrap .// -->
-                    </td>
-                    <td class="text-right">
-                        <a href="" class="btn btn-outline-primary btn-round"> + Thêm</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <figure class="media">
-                            <div class="img-wrap"><img
-                                    src="https://salt.tikicdn.com/cache/280x280/ts/product/f2/43/7d/de670c91bcdf9bd974f3f8c72a5e0e71.jpg"
-                                    class="img-thumbnail img-sm"></div>
-                            <figcaption class="media-body">
-                                <h6 class="title text-truncate">Product name goes here </h6>
-                                <dl class="param param-inline small">
-                                    <dt>Size: </dt>
-                                    <dd>XXL</dd>
-                                </dl>
-                                <dl class="param param-inline small">
-                                    <dt>Color: </dt>
-                                    <dd>Orange color</dd>
-                                </dl>
-                            </figcaption>
-                        </figure>
-                    </td>
-                    <td>
-                        <input type="text" class="form-control">
-                    </td>
-                    <td>
-                        <div class="price-wrap">
-                            <var class="price">USD 45</var>
-                            <small class="text-muted">(USD15 each)</small>
-                        </div> <!-- price-wrap .// -->
-                    </td>
-                    <td class="text-right">
-                        <a href="" class="btn btn-outline-primary btn-round"> + Thêm</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                            <p>{{this.price}} USD</p>
+                        </td>
+                        <td class="text-right action">
+                            <a href="/collection/addProduct?id_collection={{../collection._id}}&id_product={{this._id}}&nameProduct={{this.nameProduct}}&img_thumb={{this.img_thumb}}&price={{this.price}}" class="btn btn-outline-primary"> + Thêm</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
     </div>
-
-</div>
-
 </div>

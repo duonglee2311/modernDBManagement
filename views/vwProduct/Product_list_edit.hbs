@@ -61,107 +61,34 @@
             </tr>
         </thead>
         <tbody>
+            {{#each products}}
             <tr>
                 <td>
                     <figure class="media">
-                        <div class="img-wrap"><img src="https://salt.tikicdn.com/cache/280x280/ts/product/f2/43/7d/de670c91bcdf9bd974f3f8c72a5e0e71.jpg"
+                        <div class="img-wrap"><img src="{{this.img_thumb}}"
                                 class="img-thumbnail img-sm"></div>
                         <figcaption class="media-body">
-                            <h6 class="title text-truncate">Product name goes here </h6>
-                            <dl class="param param-inline small">
-                                <dt>Size: </dt>
-                                <dd>XXL</dd>
-                            </dl>
-                            <dl class="param param-inline small">
-                                <dt>Color: </dt>
-                                <dd>Orange color</dd>
-                            </dl>
+                            <h6 class="title text-truncate">{{this.nameProduct}}</h6>
                         </figcaption>
                     </figure>
                 </td>
                 <td>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" value="{{this.qty}}">
                 </td>
                 <td>
                     <div class="price-wrap">
-                        <var class="price">USD 145</var>
-                        <small class="text-muted">(USD5 each)</small>
-                    </div> <!-- price-wrap .// -->
+                        <var class="price">USD {{this.price}}</var>
+                    </div> 
                 </td>
                 <td class="text-right">
-                    <a title="" href="/product/edit?id=1" class="btn btn-outline-success" data-toggle="tooltip"> Sửa</a>
-                    <a href="" class="btn btn-outline-danger"> × Xóa</a>
+                    <a title="" href="/product/edit?id={{this._id}}" class="btn btn-outline-success" data-toggle="tooltip"> Sửa</a>
+                    <a href="/product/delete?id={{this._id}}" class="btn btn-outline-danger"> × Xóa</a>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <figure class="media">
-                        <div class="img-wrap"><img src="https://salt.tikicdn.com/cache/280x280/ts/product/f2/43/7d/de670c91bcdf9bd974f3f8c72a5e0e71.jpg"
-                                class="img-thumbnail img-sm"></div>
-                        <figcaption class="media-body">
-                            <h6 class="title text-truncate">Product name goes here </h6>
-                            <dl class="param param-inline small">
-                                <dt>Size: </dt>
-                                <dd>XXL</dd>
-                            </dl>
-                            <dl class="param param-inline small">
-                                <dt>Color: </dt>
-                                <dd>Orange color</dd>
-                            </dl>
-                        </figcaption>
-                    </figure>
-                </td>
-                <td>
-                    <input type="text" class="form-control">
-                    
-                </td>
-                <td>
-                    <div class="price-wrap">
-                        <var class="price">USD 35</var>
-                        <small class="text-muted">(USD10 each)</small>
-                    </div> <!-- price-wrap .// -->
-                </td>
-                <td class="text-right">
-                    <a title="" href="/product/edit?id=1" class="btn btn-outline-success" data-toggle="tooltip"> Sửa</a>
-                    <a href="" class="btn btn-outline-danger btn-round"> × Xóa</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <figure class="media">
-                        <div class="img-wrap"><img src="https://salt.tikicdn.com/cache/280x280/ts/product/f2/43/7d/de670c91bcdf9bd974f3f8c72a5e0e71.jpg"
-                                class="img-thumbnail img-sm"></div>
-                        <figcaption class="media-body">
-                            <h6 class="title text-truncate">Product name goes here </h6>
-                            <dl class="param param-inline small">
-                                <dt>Size: </dt>
-                                <dd>XXL</dd>
-                            </dl>
-                            <dl class="param param-inline small">
-                                <dt>Color: </dt>
-                                <dd>Orange color</dd>
-                            </dl>
-                        </figcaption>
-                    </figure>
-                </td>
-                <td>
-                    <input type="text" class="form-control">
-                </td>
-                <td>
-                    <div class="price-wrap">
-                        <var class="price">USD 45</var>
-                        <small class="text-muted">(USD15 each)</small>
-                    </div> <!-- price-wrap .// -->
-                </td>
-                <td class="text-right">
-                    <a title="" href="/product/edit?id=1" class="btn btn-outline-success" data-toggle="tooltip"> Sửa</a>
-                    <a href="" class="btn btn-outline-danger btn-round"> × Xóa</a>
-                </td>
-            </tr>
+            {{/each}}
         </tbody>
     </table>
-</div> <!-- card.// -->
-
 </div>
-<!--container end.//-->
+</div>
+
 

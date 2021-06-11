@@ -4,6 +4,10 @@ const router=express.Router();
 
 router.get('/',controller.getProduct);
 router.get('/edit',controller.editProduct);
-// router.get('/edit?id',controller.detailProduct);
+router.post('/edit',controller.handleEditProduct);
+router.get('/add', controller.addProduct);
+router.post('/add',controller.handleAddProduct);
+router.get('/delete',controller.deleteProduct);
+router.post('/:id/comment',controller.handleAddComment);
 
 module.exports = router;

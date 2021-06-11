@@ -33,6 +33,7 @@ module.exports={
     //[GET] /logout
     logout: async(req, res)=>{
         req.session.destroy();
+        res.locals.isUser = false;
         res.redirect('/login');
     },
     //[GET] /register

@@ -7,19 +7,11 @@ const session = require('express-session');
 let RedisStore = require('connect-redis')(session);
 let redisClient = redis.createClient();
 
-
+const mongodb = require('./utils/mongodb');
 
 const app = express();
 const port = 3100;
 
-// var isLogin = true;
-// app.use(function (req, res, next){
-//   global.isLogin = true;
-//   // res.locals = {
-//   //   isLogin: false,
-//   // };
-//   next();
-// });
 
 
 app.use(session({
@@ -30,6 +22,7 @@ app.use(session({
   cookie:{secure: false}  
 }));
 
+mongodb.connect();
 
 app.use(express.urlencoded({
   extended: true

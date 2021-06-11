@@ -54,32 +54,33 @@
 			</div>
 		</div>
 		<div class="col-md-9">
-			<div class="collection-form">
+			<form class="collection-form" method="POST">
 				<div class="form-group">
 				  <label class="control-label col-sm-2" for="collection_name">Tên bộ sưu tập</label>
 				  <div class="col-sm-10">          
-					<input type="text" class="form-control" id="collection_name" placeholder="Tên bộ sưu tập" name="fname">
+					<input type="text" class="form-control" id="collection_name" placeholder="Tên bộ sưu tập" name="nameCollection">
 				  </div>
 				</div>
 				<div class="form-group">
 				  <label class="control-label col-sm-2" for="collection_thumb">Link ảnh:</label>
 				  <div class="col-sm-10">          
-					<input type="text" class="form-control" id="collection_thumb" placeholder="Link ảnh" name="collection_thumb">
+					<input type="text" class="form-control" id="collection_thumb" placeholder="Link ảnh" name="collectionThumb">
 				  </div>
 				</div>
 				<div class="form-group">
 				  <label class="control-label col-sm-2" for="desc">Mô tả:</label>
 				  <div class="col-sm-10">
-					<textarea class="form-control" rows="5" id="desc"></textarea>
+					<textarea class="form-control" rows="5" id="desc" name="collectionDescription"></textarea>
 				  </div>
 				</div>
+				<input type="hidden" name="seller" value="{{isUser.userID}}">
 				<div class="form-group">        
 				  <div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" class="btn btn-default">Lưu</button>
 					<a href="/collection" class="btn btn-dark float-right">Danh sách</a>
 				  </div>
 				</div>
-			</div>
+			</form>
 		</div>
 	</div>
 </div>

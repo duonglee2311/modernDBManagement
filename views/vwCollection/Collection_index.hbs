@@ -68,13 +68,14 @@
             </tr>
         </thead>
         <tbody>
+            {{#each collections}}
             <tr>
                 <td>
                     <figure class="media">
-                        <div class="img-wrap"><img src="https://salt.tikicdn.com/cache/280x280/ts/product/f2/43/7d/de670c91bcdf9bd974f3f8c72a5e0e71.jpg"
+                        <div class="img-wrap"><img src="{{this.collectionThumb}}"
                                 class="img-thumbnail img-sm"></div>
                         <figcaption class="media-body">
-                            <a href="" class="link_collection"><h6 class="title text-truncate">Bộ sưu tập hiphop</h6></a>
+                            <a href="" class="link_collection"><h6 class="title text-truncate">{{this.nameCollection}}</h6></a>
                         </figcaption>
                     </figure>
                 </td>
@@ -82,46 +83,11 @@
                     <input type="text" class="form-control">
                 </td>
                 <td class="text-right">
-                    <a href="/collection?id=1" class="btn btn-outline-success">Sửa</a>
+                    <a href="/collection?id={{this._id}}" class="btn btn-outline-success">Sửa</a>
                     <a href="" class="btn btn-outline-danger"> × Xóa</a>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <figure class="media">
-                        <div class="img-wrap"><img src="https://salt.tikicdn.com/cache/280x280/ts/product/f2/43/7d/de670c91bcdf9bd974f3f8c72a5e0e71.jpg"
-                                class="img-thumbnail img-sm"></div>
-                        <figcaption class="media-body">
-                            <a href="" class="link_collection"><h6 class="title text-truncate">Bộ sưu tập mùa đông</h6></a>
-                        </figcaption>
-                    </figure>
-                </td>
-                <td>
-                    <input type="text" class="form-control">
-                </td>
-                <td class="text-right">
-                    <a href="/collection?id=1" class="btn btn-outline-success">Sửa</a>
-                    <a href="" class="btn btn-outline-danger"> × Xóa</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <figure class="media">
-                        <div class="img-wrap"><img src="https://salt.tikicdn.com/cache/280x280/ts/product/f2/43/7d/de670c91bcdf9bd974f3f8c72a5e0e71.jpg"
-                                class="img-thumbnail img-sm"></div>
-                        <figcaption class="media-body">
-                            <a href="" class="link_collection"><h6 class="title text-truncate">Bộ sưu tập mùa hè</h6></a>
-                        </figcaption>
-                    </figure>
-                </td>
-                <td>
-                    <input type="text" class="form-control">
-                </td>
-                <td class="text-right">
-                    <a href="/collection?id=1" class="btn btn-outline-success">Sửa</a>
-                    <a href="" class="btn btn-outline-danger"> × Xóa</a>
-                </td>
-            </tr>
+            {{/each}}
         </tbody>
     </table>
 </div> <!-- card.// -->

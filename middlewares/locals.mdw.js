@@ -4,6 +4,7 @@ module.exports = function(app) {
             req.session.user = false;
         }
         res.locals.isUser = req.session.user;
+        // console.log(res.locals.isUser);
         next();
     })
 }

@@ -11,9 +11,3 @@ client.connect(function(err, result){
 })
 
 module.exports =client;
-// module.exports = {
-//     //Get all user
-//     getAllUser: async(req,res)=>{
-
-//     }
-// };

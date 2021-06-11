@@ -39,6 +39,12 @@ module.exports = function (app) {
             return output;
         }
       },
+      selected: (arr1, arr2) => {
+        output = 'selected'
+        if(arr1 === arr2){
+            return output;
+        }
+      },
       sum: (a,b) =>{
         // console.log("davao");
         // console.log(req.session.user);

@@ -1,2 +1,2 @@
 CREATE KEYSPACE tikin WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'} AND durable_writes = true
-CREATE TABLE IF NOT EXISTS user (id int,username text,password text,fullname text,dataofbirth date, address text,phonenum text,gender text, avatar text, tikixu int,PRIMARY KEY (id));
+CREATE TABLE IF NOT EXISTS user (id uuid,username text,password text,fullname text,dateofbirth date, address text,phonenum text,gender text, avatar text, tikixu int,PRIMARY KEY (id));

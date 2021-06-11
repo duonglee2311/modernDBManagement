@@ -2,7 +2,7 @@
 
     <section class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Sửa thông tin sản phẩm</h3>
+            <h3 class="panel-title">Thêm sản phẩm</h3>
         </div>
         <div class="panel-body">
 
@@ -10,41 +10,41 @@
                 <div class="form-group">
                     <label for="name" class="col-sm-3 control-label">Tên sản phẩm</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="nameProduct" id="name" value="{{product.nameProduct}}">
+                        <input type="text" class="form-control" name="nameProduct" id="name" placeholder="Tên sản phẩm">
                     </div>
                 </div> <!-- form-group // -->
                 <div class="form-group">
                     <label for="name" class="col-sm-3 control-label">Giá sản phẩm</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="price" id="name" value="{{product.price}}">
+                        <input type="text" class="form-control" name="price" id="name" placeholder="Giá sản phẩm">
                     </div>
                 </div> <!-- form-group // -->
                 <div class="form-group">
                     <label for="about" class="col-sm-3 control-label">Mô tả sản phẩm</label>
                     <div class="col-sm-9">
-                        <textarea rows="8" class="form-control" name="description" id="about">{{product.description}}</textarea>
+                        <textarea class="form-control" name="description" id="about"></textarea>
                     </div>
                 </div> <!-- form-group // -->
                 <div class="form-group">
                     <label for="img_thumb" class="col-sm-3 control-label">Link ảnh sản phẩm</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control" name="img_thumb" id="img_thumb" value="{{product.img_thumb}}">
+                        <input type="text" class="form-control" name="img_thumb" id="img_thumb" placeholder="Link_img">
                     </div>
                 </div> <!-- form-group // -->
                 <div class="form-group">
                     <label for="qty" class="col-sm-3 control-label">Số lượng sản phẩm</label>
                     <div class="col-sm-3">
-                        <input type="number" min="0" class="form-control" name="qty" id="qty" value="{{product.qty}}">
+                        <input type="number" min="0" class="form-control" name="qty" id="qty" placeholder="Số lượng sản phẩm">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="qty" class="col-sm-3 control-label">Danh mục sản phẩm</label>
                     <div class="col-sm-3">
-                        <select name="typeProduct" class="form-control">
+                        <select name="type" class="form-control">
                             <option value="">===Chọn===</option>
-                            <option value="Điện thoại" {{selected 'Điện thoại' product.type}}>Điện thoại</option>
-                            <option value="Máy tính" {{selected 'Máy tính' product.type}}>Máy tính</option>
-                            <option value="Đồng hồ" {{selected 'Đồng hồ' product.type}}>Đồng hồ<option>
+                            <option value="Điện thoại">Điện thoại</option>
+                            <option value="Máy tính">Máy tính</option>
+                            <option value="Đồng hồ">Đồng hồ<option>
                         </select>
                     </div>
                 </div>

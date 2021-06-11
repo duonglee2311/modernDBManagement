@@ -6,29 +6,46 @@ var driver = neo4j.driver(
     neo4j.auth.basic('admin','123456')
   );
 
-let session =driver.session({database: 'demo',});
-//select {} from {} where {}
+  //select {} from {} where {}
+const neo_query=async (query)=>{
+    let session =driver.session({database: 'demo',});
+    let results=await session.run(query);
+    session.close();
+    return results;
+}
 
 // const neo_query= util.promisify(session.run).bind();
 module.exports={
-    createNode: (nodeLabel,nodeValue)=>{
-        return session.run(`CREATE (:${nodeLabel} ${nodeValue});`);
+    createNode:async (nodeLabel,nodeValue)=>{
+        // return session.run(`CREATE (:${nodeLabel} ${nodeValue});`);
+        let query=`CREATE (:${nodeLabel} ${nodeValue});`;
+        let results=await neo_query(query);
+        return results
     },
-    mergeNode: (nodeLabel,nodeValue)=>{
-        return session.run(`MERGE (:${nodeLabel} ${nodeValue});`);
+    mergeNode:async (nodeLabel,nodeValue)=>{
+        // return session.run(`MERGE (:${nodeLabel} ${nodeValue});`);
+        let query=`MERGE (:${nodeLabel} ${nodeValue});`;
+        let results=await neo_query(query);
+        return results;
     },
-    createRelationship:(nodeLabel1,nodeValue1,relName,relValue,nodeLabel2,nodeValue2)=>{
+    createRelationship:async (nodeLabel1,nodeValue1,relName,relValue,nodeLabel2,nodeValue2)=>{
+        let query;
         if(relValue ==-1)
-            return session.run(`MATCH (X:${nodeLabel1} ${nodeValue1}),(Y:${nodeLabel2} ${nodeValue2}) MERGE (X)-[:${relName}]-(Y)`);
-        return session.run(`MATCH (X:${nodeLabel1} ${nodeValue1}),(Y:${nodeLabel2} ${nodeValue2}) MERGE (X)-[:${relName} ${relValue}]-(Y)`);
+            query= `MATCH (X:${nodeLabel1} ${nodeValue1}),(Y:${nodeLabel2} ${nodeValue2}) MERGE (X)-[:${relName}]-(Y)`;
+        else{
+            query= `MATCH (X:${nodeLabel1} ${nodeValue1}),(Y:${nodeLabel2} ${nodeValue2}) MERGE (X)-[:${relName} ${relValue}]-(Y)`;
+        }
+        let results=await neo_query(query);
+        return results; 
         // return session.run(`MATCH (X:${nodeLabel1} $para1),(Y:${nodeLabel2} $para2) MERGE X-(:${relName} $para3)-Y`,{para1: nodeValue1,para2:nodeValue2,para3:relValue})
     },
-    countNode: (nodeLabel,nodeValue)=>{
+    countNode:async (nodeLabel,nodeValue)=>{
         // đếm số node hiện có trong graph, dùng để xác định node đó đã tạo chưa
-        console.log("showwwww", nodeValue)
-        return session.run(`MATCH (n:${nodeLabel} $para1) with count(*) as count return count;`,{para1: nodeValue});
+        // console.log("showwwww", nodeValue)
+        let query=`MATCH (n:${nodeLabel} ${nodeValue}) with count(*) as count return count;`;
+        return await neo_query(query);
     },
-    updateNode:(nodeLabel,nodeValue, updateValue)=>{
+    updateNode:async (nodeLabel,nodeValue, updateValue)=>{
         try {
             
         } catch (error) {
@@ -36,7 +53,9 @@ module.exports={
         }
         return session.run(`MATCH (p: ${nodeLabel} {name: “Jennifer”}) SET p.birthday = date(“1999-01-01”)`);
     },
-    matchNode:(nodeList,expression, results)=>{
+    matchNode:async (nodeList,expression, results)=>{
+        let query=`MATCH ${nodeList} WHERE ${expression} RETURN ${results}`;
+        return await neo_query(query);
         return session.run(`MATCH ${nodeList} WHERE ${expression} RETURN ${results}`);  
     }
 }

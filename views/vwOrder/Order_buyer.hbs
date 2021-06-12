@@ -232,8 +232,8 @@
                                 <td class="hidden-xs"><a href="/order?id={{this.orderId}}" class="order_link">{{this.orderId}}</a></td>
                                 <td>{{this.orderDate}}</td>
                                 <td>{{this.orderName}}</td>
-                                <td>{{this.totalAmount}}</td>
-                                <td class="text-center">${{this.delivery}}</td>
+                                <td>${{this.totalAmount}}</td>
+                                <td class="text-center">{{this.delivery}}</td>
                                 {{!-- <td class="text-center">{{this.orderId}}</td> --}}
                             </tr>
                             {{/each}}

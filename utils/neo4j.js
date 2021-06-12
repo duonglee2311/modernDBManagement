@@ -53,10 +53,16 @@ module.exports={
         }
         return session.run(`MATCH (p: ${nodeLabel} {name: “Jennifer”}) SET p.birthday = date(“1999-01-01”)`);
     },
-    matchNode:async (nodeList,expression, results)=>{
-        let query=`MATCH ${nodeList} WHERE ${expression} RETURN ${results}`;
+    matchNode:async (nodeList,expression, results,orderBy)=>{
+        let query;
+        if(!orderBy){
+            query=`MATCH ${nodeList} WHERE ${expression} RETURN ${results}`
+        }
+        else{
+            query=`MATCH ${nodeList} WHERE ${expression} RETURN ${results} ORDER BY ${orderBy}`;
+        }
         return await neo_query(query);
-        return session.run(`MATCH ${nodeList} WHERE ${expression} RETURN ${results}`);  
+        // return session.run(`MATCH ${nodeList} WHERE ${expression} RETURN ${results}`);  
     }
 }
 

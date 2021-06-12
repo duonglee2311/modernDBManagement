@@ -13,7 +13,18 @@ const product_R_Seller='HAVE';
 const Order_R_Buyr='ORDERED_BY';
 const Order_R_delivery='DELIVERYTYPE_IN';
 const Order_R_payment='PAID_IN';
-
+const getResult=(result)=>{
+    let orderList=[];
+    result.records.forEach(element => {
+        let ob= {};
+        for (const i in element.keys) {
+            ob[element.keys[i]]=element._fields[i];
+        }
+        // console.log('order: ',ob);
+        orderList.push(ob);
+    });
+    return orderList;
+}
 module.exports={
     async setOrder(buyerID,buyerValue){
        try {
@@ -47,7 +58,7 @@ module.exports={
            isSuccess= (await db.createRelationship(orderNode,orderValue,Order_R_Buyr,-1,buyerNode,stringBuyer)).summary.counters._stats.relationshipsCreated;
            console.log("relationship: ",isSuccess)
            //tạo relationship giữa delivery: status="Process" với order
-           let relationshipValue='{delDatetime: "'+Date()+'"}'
+           let relationshipValue='{delDatetime: "'+Date.now()+'"}'
            isSuccess=(await db.createRelationship(deliveryNode,'{name: "Processing"}',Order_R_delivery,relationshipValue,orderNode,orderValue)).summary.counters._stats.relationshipsCreated;
            console.log("Order_R_delivery",isSuccess);
            //tạo relationship giữa order và payment
@@ -88,33 +99,77 @@ module.exports={
     async getOrder(nodeID, nodeType){
         //nodeType: 0: buyer, 1: seller
         let orderList=[];
-        let nodeList,nodeExpression,results;
+        let nodeList,nodeExpression,results,isSorted;
         if(nodeType==0){
             // lấy danh sách đơn hàng của buyer theo thứ tự delivery
-            nodeList=`(n:${buyerNode})-[${Order_R_Buyr}]-(o:${orderNode})-[d:${Order_R_delivery}]-(deli:${deliveryNode})`;
+            nodeList=`(n:${buyerNode})-[${Order_R_Buyr}]-(o:${orderNode})`;//-[d:${Order_R_delivery}]-(deli:${deliveryNode})`;
             nodeExpression=`n.userID="${nodeID}"`;
-            results='o.orderId as orderId,o.orderName as orderName,o.totalAmount as totalAmount ,o.orderDate as orderDate ,deli.name as delivery';
+            results='o.orderId as orderId,o.orderName as orderName,o.totalAmount as totalAmount ,o.orderDate as orderDate,o.currentStatus as delivery';// ,deli.name as delivery';
         }else if(nodeType==1){
-            // nodeList=`(n:${buyerNode})-[${Order_R_Buyr}]-(o:${orderNode})-[d:${Order_R_delivery}]-(deli:${deliveryNode})`;
-            // nodeExpression=`n.userID="${nodeID}"`;
-            // results='o.orderId as orderId,o.orderName as orderName,o.totalAmount as totalAmount ,o.orderDate as orderDate ,deli.name as delivery';
+            nodeList=`(n:${sellerNode})-[${product_R_Seller}]-(p:${productNode})-[:${product_R_Order}]-(o:${orderNode})`;
+            nodeExpression=`n.id="${nodeID}"`;
+            results='o.orderId as orderId,o.orderName as orderName,o.totalAmount as totalAmount ,o.orderDate as orderDate,o.currentStatus as delivery';
+            isSorted='o.orderDate';
         }
         else{
             return -1;
         }
-        results= await db.matchNode(nodeList,nodeExpression,results);
+        results= await db.matchNode(nodeList,nodeExpression,results,isSorted);
         console.log('abc: ',results.records[0].keys);
-        results.records.forEach(element => {
-            let ob= {};
-            for (const i in element.keys) {
-                ob[element.keys[i]]=element._fields[i];
-            }
-            // console.log('order: ',ob);
-            orderList.push(ob);
-        });
+        orderList=getResult(results);
+        orderList.forEach(item=>{
+            let dateValue=new Date(parseInt(item.orderDate));
+            item.orderDate=dateValue.getDate()+'/'+dateValue.getMonth()+'/'+dateValue.getFullYear();
+        })
         console.log('order',orderList)
         return orderList;
         // lấy danh sách đơn hàng của buyer theo thứ tự delivery
     },
+    async getOrderDetail(nodeID){
+        try {
+            let fulledOrderDetail;
+            let orderHeader,orderDelivery,detailProduct;
+            let node,expression,returnValue,results;
+            node=`(o:${orderNode})-[:${Order_R_payment}]-(p:${paymentNode})`;
+            expression=`o.orderId="${nodeID}"`;
+            returnValue=`o.orderId as orderId, o.orderDate as orderDate, o.orderName as orderName,o.lastName as lastName,o.firstName as firstName, o.phoneNumber as phoneNumber, o.currentStatus as currentStatus, o.totalAmount as totalAmount`;
+            results= await db.matchNode(node, expression,returnValue);
+            orderHeader= getResult(results);
+            // console.log('orderHeader',orderHeader);
+            node=`(o:${orderNode})-[de:${Order_R_delivery}]-(d:${deliveryNode})`;
+            sort='de.delDatetime'
+            returnValue=`o.orderId as orderId,de.delDatetime,d.name`;
+            results= await db.matchNode(node, expression,returnValue,sort);
+            orderDelivery= getResult(results);
+            // orderDelivery.
+            console.log('orderDelivery',orderDelivery);
+            
+            node=`(o:${orderNode})-[i:${product_R_Order}]-(p:${productNode})`;
+            // sort='de.delDatetime'
+            returnValue=`p.id as id,p.name as name,p.image as image, p.price as price, i.number as quatity`;
+            results= await db.matchNode(node, expression,returnValue);
+            detailProduct= getResult(results);
+            // console.log('detailProduct',detailProduct);
+            fulledOrderDetail={
+                orderInfo: orderHeader,
+                delivery: orderDelivery,
+                product: detailProduct
+            };
+            return fulledOrderDetail;
+
+        } catch (err) {
+            console.log(err)
+            return -1;
+        }
+    },
+    async updateOrder(orderId,deliveryName){
+        let valueDelivery,valueOrder,timeCreated; 
+        valueDelivery=`{name: "${deliveryName}"}`;
+        valueOrder=`{orderId: "${orderId}"}`;
+        timeCreated='{delDatetime: "'+Date.now()+'"}';
+        let results=await db.createRelationship(orderNode,valueOrder,Order_R_delivery,timeCreated,deliveryNode,valueDelivery);
+        console.log('update:abc ',results);
+        return 1;
+    }
 };
 

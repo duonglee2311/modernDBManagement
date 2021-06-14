@@ -15,11 +15,13 @@ module.exports={
     //GET: /order
     getOrder: async(req,res)=>{
         if(req.query.id != null){
+            console.log(req.query.id);
             let listOrder=await orderModel.getOrderDetail(req.query.id);
+            console.log("list:",listOrder)
             res.render("vwOrder/Order_detail",{
-                orderInfo: listOrder.orderHeader,
-                delivery: listOrder.orderDelivery,
-                product: listOrder.detailProduct
+                orderInfo: listOrder.orderInfo[0],
+                delivery: listOrder.delivery,
+                product: listOrder.product
             })
         }
         else{ //GET: /order?id=1

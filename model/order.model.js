@@ -50,7 +50,7 @@ module.exports={
            console.log('totalAmount:',totalAmount);
            let orderDate=Date.now();
            let orderId=`${buyerID}`+orderDate;
-           orderValue=`{orderId: "${orderId}",orderName: "${orderName}", orderDate: "${orderDate}", firstName: "${buyerValue.firstName}", lastName: "${buyerValue.lastName}", phoneNumber: "${buyerValue.phoneNumber}",totalAmount: "${totalAmount}",currentStatus:"Processing"}`;
+           orderValue=`{orderId: "${orderId}",orderName: "${orderName}", orderDate: "${orderDate}", firstName: "${buyerValue.firstName}", lastName: "${buyerValue.lastName}", phoneNumber: "${buyerValue.phoneNumber}",address: "${buyerValue.address}",totalAmount: "${totalAmount}",currentStatus:"Processing"}`;
            isSuccess= (await db.createNode(orderNode,orderValue)).summary.counters._stats.nodesCreated;
            console.log("orderNode",isSuccess);
     
@@ -132,23 +132,40 @@ module.exports={
             let node,expression,returnValue,results;
             node=`(o:${orderNode})-[:${Order_R_payment}]-(p:${paymentNode})`;
             expression=`o.orderId="${nodeID}"`;
-            returnValue=`o.orderId as orderId, o.orderDate as orderDate, o.orderName as orderName,o.lastName as lastName,o.firstName as firstName, o.phoneNumber as phoneNumber, o.currentStatus as currentStatus, o.totalAmount as totalAmount`;
+            returnValue=`o.orderId as orderId, o.orderDate as orderDate, o.orderName as orderName,o.lastName as lastName,o.firstName as firstName,o.address as address, o.phoneNumber as phoneNumber, o.currentStatus as currentStatus, o.totalAmount as totalAmount,p.type as payment`;
             results= await db.matchNode(node, expression,returnValue);
             orderHeader= getResult(results);
-            // console.log('orderHeader',orderHeader);
+            console.log('orderHeader',orderHeader);
             node=`(o:${orderNode})-[de:${Order_R_delivery}]-(d:${deliveryNode})`;
             sort='de.delDatetime'
-            returnValue=`o.orderId as orderId,de.delDatetime,d.name`;
+            returnValue=`o.orderId as orderId,de.delDatetime as dateOrder,d.name as status`;
             results= await db.matchNode(node, expression,returnValue,sort);
             orderDelivery= getResult(results);
             // orderDelivery.
+            orderDelivery.forEach(item=>{
+                let dateValue=new Date(parseInt(item.dateOrder));
+                item.dateOrder=dateValue.getHours()+":"+dateValue.getMinutes()+" "+dateValue.getDate()+'/'+dateValue.getMonth()+'/'+dateValue.getFullYear();
+                if(item.status=='Processing'){
+                    item.status='Tiki đã tiếp nhận đơn hàng, vui lòng đợi cửa hàng xử lý đơn hàng.';
+                }
+                else if(item.status=='Transporting'){
+                    item.status='Tiki đang vận chuyển đơn hàng.'
+                }
+                else if(item.status=='Success'){
+                    item.status='Tiki đã giao hàng thành công.'
+                }else{
+                    item.status='Tiki đã tiếp nhận yêu cầu hủy đơn hàng'
+                }
+            })
             console.log('orderDelivery',orderDelivery);
-            
             node=`(o:${orderNode})-[i:${product_R_Order}]-(p:${productNode})`;
             // sort='de.delDatetime'
-            returnValue=`p.id as id,p.name as name,p.image as image, p.price as price, i.number as quatity`;
+            returnValue=`p.id as id,p.name as name,p.image as image, p.price as price, i.number as quantity`;
             results= await db.matchNode(node, expression,returnValue);
             detailProduct= getResult(results);
+            detailProduct.forEach(element=>{
+                element.subTotal=parseInt(element.quantity)*parseFloat(element.price);
+            })
             // console.log('detailProduct',detailProduct);
             fulledOrderDetail={
                 orderInfo: orderHeader,

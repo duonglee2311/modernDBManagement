@@ -48,13 +48,15 @@ ul {
 
 .order_section {
     width: 100%;
-    padding-top: 93px;
-    padding-bottom: 111px
+    padding-top: 41px;
+    padding-bottom: 30px
 }
 
 .order_title {
-    font-size: 30px;
-    font-weight: 500
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: rgb(36, 36, 36);
 }
 
 .order_items {
@@ -100,8 +102,8 @@ ul {
 }
 
 .order_item_text {
-    font-size: 18px;
-    margin-top: 35px
+    font-size: 14px;
+    margin-top: 10px
 }
 
 .order_item_text span {
@@ -195,79 +197,80 @@ ul {
 
 <div class="order_section">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <div class="order_container">
+        <div class="row ">
+            <div class="order_title ">Thông báo</div>
+            <div class="order_items">
+                <ul class="order_list">
+                {{#each delivery}}
+                        <li class="d-flex flex-row ">
+                            <div class="d-flex p-2 align-items-center">{{this.dateOrder}}</div>
+                            <div class="d-flex P-2 align-items-center">{{this.status}}</div>
+                        </li>
+                {{/each}}
+                </ul>
+            </div>
+        </div>
+        <div class="row ">
+            <li class="d-flex flex-row ">
+                <div class="p-1 col order_title align-items-center">Thông tin người nhận</div>
+                <div class="p-1 col order_title align-items-center">Hình thức thanh toán</div>
+            </li>
+            <div class="order_items">
+                <ul class="order_list">
+                        <li class="d-flex flex-row ">
+                            <div class="p-2 flex-fill align-items-center">
+                                <div style="text-transform: uppercase;"><strong>{{orderInfo.firstName}} {{orderInfo.lastName}}</strong></div>
+                                <div><i>Địa chỉ: {{orderInfo.address}}</i></div>
+                                <div><i>Điện thoại: {{orderInfo.phoneNumber}}</i></div>                            
+                            </div>
+                            <div class="p-2 flex-fill align-items-center">
+                                <div><i>Thanh toán bằng: {{orderInfo.payment}}</i></div>
+                            </div>
+                        </li>
+                </ul>
+            </div>
+        </div>
+        <div class="p-2 row">
+            <div class="col-lg-10 offset-lg-1"></div>
+                <div class="">
                     <div class="order_title">Chi tiết đơn hàng</div>
                     <div class="order_items">
-                        <ul class="order_list">
-                            <li class="order_item clearfix">
-                                <div class="order_item_image"><img src="https://i.imgur.com/qqBRWD5.jpg" alt=""></div>
-                                <div class="order_item_info d-flex flex-md-row flex-column justify-content-between">
-                                    <div class="order_item_name order_info_col">
-                                        <div class="order_item_title">Tên sản phẩm</div>
-                                        <div class="order_item_text">Samsung C7 Pro</div>
-                                    </div>
-                                    <div class="order_item_color order_info_col">
-                                        <div class="order_item_title">Màu sắc</div>
-                                        <div class="order_item_text"><span style="background-color:#999999;"></span>Bạc</div>
-                                    </div>
-                                    <div class="order_item_quantity order_info_col">
-                                        <div class="order_item_title">Số lượng</div>
-                                        <div class="order_item_text">1</div>
-                                    </div>
-                                    <div class="order_item_price order_info_col">
-                                        <div class="order_item_title">Giá cả</div>
-                                        <div class="order_item_text">$220</div>
-                                    </div>
-                                    <div class="order_item_total order_info_col">
-                                        <div class="order_item_title">Tổng giá</div>
-                                        <div class="order_item_text">$220</div>
-                                    </div>
+                        {{#each product}}
+                        <div class="row order_list order_item clearfix">
+                            <div class="order_item_image"><img src="{{this.image}}" alt=""></div>
+                            <div class="order_item_info d-flex flex-md-row flex-column justify-content-between">
+                                <div class="col-md-3 order_item_name">
+                                    <div class="order_item_title">Sản phẩm</div>
+                                    <div class="order_item_text">{{this.name}}</div>
+                                    <div class="order_item_text">SKU: {{this.id}}</div>
                                 </div>
-                            </li>
-                            <hr>
-                            <li class="order_item clearfix">
-                                <div class="order_item_image"><img src="https://i.imgur.com/qqBRWD5.jpg" alt=""></div>
-                                <div class="order_item_info d-flex flex-md-row flex-column justify-content-between">
-                                    <div class="order_item_name order_info_col">
-                                        <div class="order_item_title">Tên sản phẩm</div>
-                                        <div class="order_item_text">Samsung C7 Pro</div>
-                                    </div>
-                                    <div class="order_item_color order_info_col">
-                                        <div class="order_item_title">Màu sắc</div>
-                                        <div class="order_item_text"><span style="background-color:#999999;"></span>Bạc</div>
-                                    </div>
-                                    <div class="order_item_quantity order_info_col">
-                                        <div class="order_item_title">Số lượng</div>
-                                        <div class="order_item_text">1</div>
-                                    </div>
-                                    <div class="order_item_price order_info_col">
-                                        <div class="order_item_title">Giá cả</div>
-                                        <div class="order_item_text">$220</div>
-                                    </div>
-                                    <div class="order_item_total order_info_col">
-                                        <div class="order_item_title">Tổng giá</div>
-                                        <div class="order_item_text">$220</div>
-                                    </div>
+                                <div class="col-md-2 order_item_quantity">
+                                    <div class="order_item_title">Đơn giá</div>
+                                    <div class="order_item_text">{{this.price}} <u>đ</u></div>
                                 </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="order_total">
-                        <div class="order_total_content text-md-right">
-                            <div class="order_total_title">Tổng hóa đơn:</div>
-                            <div class="order_total_amount">$440</div>
+                                <div class="col-md-1 order_item_color">
+                                    <div class="order_item_title">Số lượng</div>
+                                    <div class="order_item_text">{{this.quantity}}</div>
+                                </div>
+                                <div class="col-md-2 order_item_price">
+                                    <div class="order_item_title">Tạm tính</div>
+                                    <div class="order_item_text">{{this.subTotal}} <u>đ</u></div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="status_title">
-                        <div class=" text-md-right">
-                            <div class="order_status">Trạng thái đơn hàng:</div>
-                            <div class="status">Hoàn tất</div>
+                        {{/each}}
+                        <hr>
+                        <div class="row order_list order_item clearfix">
+                            <div class="col order_item_price d-flex justify-content-end">
+                                <div class="col-md-2 order_item_price">
+                                    <div class="order_item_title">Tạm tính</div>
+                                    <div class="order_item_text ">{{orderInfo.totalAmount}} <u>đ</u></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="order_buttons"> 
-                        <button type="button" class="button order_button_clear">Tiếp tục mua sắm</button> 
+                        <button type="button" href="/" class="button order_button_clear">Tiếp tục mua sắm</button> 
                         <button type="button" class="button order_button_cancel">Hủy đơn hàng</button>
                     </div>
                 </div>

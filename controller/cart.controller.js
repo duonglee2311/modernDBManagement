@@ -11,7 +11,7 @@ module.exports={
        let userid=123;
        let productid=4563;
        let incrValue=req.params.value;
-       let detail={ name: "sách1", image: "../public/image", quantity: 2,price:23000, idSeller: 369, nameSeller: "duong" };
+       let detail={ name: "sách1", image: "https://i.imgur.com/qqBRWD5.jpg", quantity: 2,price:23000, idSeller: 369, nameSeller: "duong" };
         //Thêm sản phẩm
         console.log("thêm: ",await cartModel.addCart(userid,productid,detail));
         console.log('show: ',await cartModel.showCart(userid));

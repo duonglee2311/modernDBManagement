@@ -182,7 +182,7 @@ ul {
     border: none;
     font-size: 18px;
     font-weight: 400;
-    line-height: 48px;
+    line-height: 30px;
     color: #FFFFFF;
     padding-left: 35px;
     padding-right: 35px;
@@ -201,57 +201,33 @@ ul {
                     <div class="cart_title">Giỏ hàng</div>
                     <div class="cart_items">
                         <ul class="cart_list">
+                            {{#each cart}}
                             <li class="cart_item clearfix">
-                                <div class="cart_item_image"><img src="https://i.imgur.com/qqBRWD5.jpg" alt=""></div>
+                                <div class="cart_item_image"><img src="{{this.image}}" alt=""></div>
                                 <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
                                     <div class="cart_item_name cart_info_col">
                                         <div class="cart_item_title">Tên sản phẩm</div>
-                                        <div class="cart_item_text">Samsung C7 Pro</div>
+                                        <div class="cart_item_text">{{this.name}}</div>
                                     </div>
                                     <div class="cart_item_color cart_info_col">
-                                        <div class="cart_item_title">Màu sắc</div>
-                                        <div class="cart_item_text"><span style="background-color:#999999;"></span>Bạc</div>
+                                        <div class="cart_item_title">nhà cung cấp</div>
+                                        <div class="cart_item_text">{{this.nameSeller}}</div>
                                     </div>
                                     <div class="cart_item_quantity cart_info_col">
                                         <div class="cart_item_title">Số lượng</div>
-                                        <div class="cart_item_text">1</div>
+                                        <div class="cart_item_text">{{this.quantity}}</div>
                                     </div>
                                     <div class="cart_item_price cart_info_col">
                                         <div class="cart_item_title">Giá cả</div>
-                                        <div class="cart_item_text">$220</div>
+                                        <div class="cart_item_text">{{this.price}} <u>đ</u></div>
                                     </div>
                                     <div class="cart_item_total cart_info_col">
                                         <div class="cart_item_title">Tổng giá</div>
-                                        <div class="cart_item_text">$220</div>
+                                        <div class="cart_item_text">{{this.subTotal}} <u>đ</u></div>
                                     </div>
                                 </div>
                             </li>
-                            <hr>
-                            <li class="cart_item clearfix">
-                                <div class="cart_item_image"><img src="https://i.imgur.com/qqBRWD5.jpg" alt=""></div>
-                                <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-                                    <div class="cart_item_name cart_info_col">
-                                        <div class="cart_item_title">Tên sản phẩm</div>
-                                        <div class="cart_item_text">Samsung C7 Pro</div>
-                                    </div>
-                                    <div class="cart_item_color cart_info_col">
-                                        <div class="cart_item_title">Màu sắc</div>
-                                        <div class="cart_item_text"><span style="background-color:#999999;"></span>Bạc</div>
-                                    </div>
-                                    <div class="cart_item_quantity cart_info_col">
-                                        <div class="cart_item_title">Số lượng</div>
-                                        <div class="cart_item_text">1</div>
-                                    </div>
-                                    <div class="cart_item_price cart_info_col">
-                                        <div class="cart_item_title">Giá cả</div>
-                                        <div class="cart_item_text">$220</div>
-                                    </div>
-                                    <div class="cart_item_total cart_info_col">
-                                        <div class="cart_item_title">Tổng giá</div>
-                                        <div class="cart_item_text">$220</div>
-                                    </div>
-                                </div>
-                            </li>
+                            {{/each}}
                         </ul>
                     </div>
                     <div class="order_total">
@@ -261,8 +237,8 @@ ul {
                         </div>
                     </div>
                     <div class="cart_buttons"> 
-                        <button type="button" class="button cart_button_clear">Tiếp tục mua sắm</button> 
-                        <button type="button" class="button cart_button_checkout"><a href="/order/checkout" style="text-decoration: none;;">Đặt hàng</a></button>
+                        <a type="button" class="button cart_button_clear" href="/" style="text-decoration: none;;">Tiếp tục mua sắm</a> 
+                        <a type="button" class="btn btn-primary btn-lg cart_button_checkout" href="/order/checkout" style="text-decoration: none;;">Đặt hàng</a>
                     </div>
                 </div>
             </div>

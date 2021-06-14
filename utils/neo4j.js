@@ -46,12 +46,8 @@ module.exports={
         return await neo_query(query);
     },
     updateNode:async (nodeLabel,nodeValue, updateValue)=>{
-        try {
-            
-        } catch (error) {
-            
-        }
-        return session.run(`MATCH (p: ${nodeLabel} {name: “Jennifer”}) SET p.birthday = date(“1999-01-01”)`);
+        let query=`MATCH (p: ${nodeLabel} ${nodeValue}) SET ${updateValue}`
+        return await neo_query(query);
     },
     matchNode:async (nodeList,expression, results,orderBy)=>{
         let query;

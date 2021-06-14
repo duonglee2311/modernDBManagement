@@ -32,6 +32,7 @@ module.exports={
             let cartKeyProduct='Cart:'+userid+':'+element;
             const item=await db.hgetall(cartKeyProduct);
             item.id=element;
+            item.subTotal=parseInt(item.quantity)*parseFloat(item.price);
             // console.log(item);
             list.push(item); 
         };

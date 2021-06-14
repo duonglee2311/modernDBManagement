@@ -35,11 +35,11 @@ module.exports={
         if(req.query.id != null){
             console.log('vo day')
             let listOrder=await orderModel.getOrderDetail(req.query.id);
-            console.log(listOrder)
+            console.log("o day",listOrder)
             res.render("vwOrder/Order_saler_edit",{
-                orderInfo: listOrder.orderHeader,
-                delivery: listOrder.orderDelivery,
-                product: listOrder.detailProduct
+                orderInfo: listOrder.orderInfo[0],
+                delivery: listOrder.delivery,
+                product: listOrder.product
             });
         }
         //GET: /order/edit
@@ -50,11 +50,14 @@ module.exports={
         
     },
     setDelivery: async(req,res)=>{
-        if(!req.body.id || !req.body.status){
-            console.log('tao thong bao o day')
+        if(!req.query.id || !req.query.status){
+            console.log('tao thong bao o day');
+            alert("thong tin khong chinh xac");
+            res.redirect('back');
         }
+        let status;
         // thuc hien update
-        await orderModel.updateOrder(1231623504353035,"Cancelled");
+        await orderModel.updateOrder(req.query.id,req.query.status);
         res.redirect('back');
     }
 }

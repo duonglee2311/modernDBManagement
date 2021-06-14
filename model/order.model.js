@@ -135,6 +135,7 @@ module.exports={
             returnValue=`o.orderId as orderId, o.orderDate as orderDate, o.orderName as orderName,o.lastName as lastName,o.firstName as firstName,o.address as address, o.phoneNumber as phoneNumber, o.currentStatus as currentStatus, o.totalAmount as totalAmount,p.type as payment`;
             results= await db.matchNode(node, expression,returnValue);
             orderHeader= getResult(results);
+            // orderHeader[0].currentStatus= orderHeader[0].currentStatus=="Processing"? true: false;
             console.log('orderHeader',orderHeader);
             node=`(o:${orderNode})-[de:${Order_R_delivery}]-(d:${deliveryNode})`;
             sort='de.delDatetime'
@@ -180,11 +181,13 @@ module.exports={
         }
     },
     async updateOrder(orderId,deliveryName){
+        console.log('model:',orderId,deliveryName)
         let valueDelivery,valueOrder,timeCreated; 
         valueDelivery=`{name: "${deliveryName}"}`;
         valueOrder=`{orderId: "${orderId}"}`;
         timeCreated='{delDatetime: "'+Date.now()+'"}';
         let results=await db.createRelationship(orderNode,valueOrder,Order_R_delivery,timeCreated,deliveryNode,valueDelivery);
+        results=await db.updateNode(orderNode,valueOrder,`p.currentStatus="${deliveryName}"`);
         console.log('update:abc ',results);
         return 1;
     }

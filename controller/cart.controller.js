@@ -1,5 +1,11 @@
 const cartModel = require('../model/cart.model')
 module.exports={
+    getCart: async(req,res)=>{
+        let cart=await cartModel.showCart('123');
+        console.log('show: ',cart);
+        res.render("vwCart/Cart",{cart: cart});
+        //res.send("OK")
+    },
     addCart: async(req,res)=>{
         //Input: nhận vào thông tin sản phẩm: productID,name, image, price,quatity
         // - thông tin user: userID
@@ -7,7 +13,6 @@ module.exports={
         //- chưa thì thêm vào ds giỏ và thêm vào detail ds giỏ hàng
         // -Có rồi:
         //- cập nhật số lượng tại detail ds giỏ hàng
-
        let userid=123;
        let productid=4563;
        let incrValue=req.params.value;
@@ -19,15 +24,10 @@ module.exports={
         //fail: trả về 0
         // if fail
         // update sản phẩm
-
-        // console.log("xem data\n",await cartModel.showCart());
-        console.log("update: ", await cartModel.updateCart(userid,productid,1));
         res.render("vwCart/Cart")
     },
     updateCart: async(req,res)=>{
-        res.send("OK")
-    },
-    showCart: async(req,res)=>{
+        console.log("update: ", await cartModel.updateCart(userid,productid,1));
         res.send("OK")
     },
     deleteCart: async(req,res)=>{

@@ -1,9 +1,12 @@
-const authModel = require('../model/auth.model');
+const Product = require('../model/product.model');
+const {mutipleMongooseToObject} = require('../utils/mongoose');
 module.exports={
-    homePage: async(req,res)=>{
-        // console.log(req.session.userid);
-        // res.json(authModel.getSession())
-        // console.log(req.session.user.userID)
-        res.render("homepage",{user: req.session.user});
+    homePage: async(req,res, next)=>{
+        Product.find({})
+            .then((products) => {
+                res.render("homepage",{user: req.session.user, products: mutipleMongooseToObject(products)});
+            })
+            .catch(next);
+        
     }
 }

@@ -73,6 +73,10 @@
 a {
     text-decoration: none !important
 }
+.product_name{
+    height: 100px;
+    overflow: hidden;
+}
 </style>
 
 
@@ -86,7 +90,7 @@ a {
                 </div>
                 <div class="card-body bg-light text-center">
                     <div class="mb-2">
-                        <h6 class="font-weight-semibold mb-2"> <a href="/product?id={{this._id}}" class="text-default mb-2" data-abc="true">{{this.nameProduct}}</a> </h6> <a href="#" class="text-muted" data-abc="true">Loại: {{this.type}}</a>
+                        <h6 class="font-weight-semibold mb-2 product_name"> <a href="/product?id={{this._id}}" class="text-default mb-2" data-abc="true">{{this.nameProduct}}</a> </h6> <a href="#" class="text-muted" data-abc="true">Loại: {{this.type}}</a>
                     </div>
                     <h3 class="mb-0 font-weight-semibold">${{this.price}}</h3>
                     <div> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> <i class="fa fa-star star"></i> </div>

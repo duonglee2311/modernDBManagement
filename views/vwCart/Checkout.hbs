@@ -3,32 +3,32 @@
     <div class="col-md-2"></div>
     <div class="col-md-8 order-md-1">
         <h4 class="mb-3">Thông tin đặt hàng</h4>
-        <form class="needs-validation" method="post">
+        <form class="needs-validation" method="POST">
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="firstName">First name</label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="" value="a">
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="" value="">
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label for="lastName">Last name</label>
-                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="" value="a">
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="" value="">
                 </div>
             </div>
 
             <div class="mb-3">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com"value="a">
+                <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com"value="">
             </div>
 
             <div class="mb-3">
                 <label for="phoneNumber">Số điện thoại</label>
-                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Nhập số điện thoại" value="a">
+                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Nhập số điện thoại" value="">
             </div>
 
             <div class="mb-3">
                 <label for="address">Địa chỉ</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Nhập địa chỉ"value="a">
+                <input type="text" class="form-control" id="address" name="address" placeholder="Nhập địa chỉ" value="{{user.address}}">
             </div>
             <div class="mb-3">
                 <label for="address">Loại thanh toán</label>

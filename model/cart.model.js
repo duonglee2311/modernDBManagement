@@ -21,6 +21,7 @@ module.exports={
     async showCart(userid){
         //Lấy ra ds sản phẩm trong cart
         const cartKey='Cart:'+userid;
+        console.log(cartKey);
         let listProduct=await db.smembers(cartKey);
         console.log("ds san pham:",listProduct);
         // nếu không giỏ hàng không có sản phẩm (không tồn tại) => return -1
@@ -46,7 +47,7 @@ module.exports={
             //giảm với value <0
             //- nếu tăng nếu value>0
             let isEmptyQuantity= await db.hget(cartKeyProduct,"quantity");
-            if(isEmptyQuantity<=1){
+            if(isEmptyQuantity + value < 1){
                 // xoá sản phẩm: trả về 1: thành công; 0: không thành công
                 return this.deleteItemCart(userid,productid);
                 

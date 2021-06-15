@@ -37,7 +37,7 @@
     <ul class="navbar-nav ml-auto">
       {{#if isUser}}
       <li class="nav-item">
-        <a class="nav-link" href="/cart">Shopping Cart ({{cartSummary}} items)</span></a>
+        <a class="nav-link" href="/cart?userID={{isUser.userID}}">Shopping Cart ( items)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"

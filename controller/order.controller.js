@@ -1,20 +1,26 @@
-const { async } = require('../model/order.model');
-const orderModel = require('../model/order.model')
+// const { async } = require('../model/order.model');
+const orderModel = require('../model/order.model');
+const userModel = require('../model/user.model');
 module.exports={
     //GET: /order/checkout
     getcheckout: async(req, res)=>{
-        res.render("vwCart/Checkout");
+        let user = await userModel.getOneUser(req.session.user.userID);
+        // console.log(user);
+        res.render("vwCart/Checkout", {user :user[0]});
     },
     setCheckout: async(req,res)=>{
-        let userid=123;// lấy userID redis session
+        let userid=req.session.user.userID;// lấy userID redis session
         console.log(req.body);
-        // await orderModel.setOrder(userid,req.body);
-        await orderModel.setOrder('123',req.body);
+        await orderModel.setOrder(userid,req.body);
         res.redirect('/order');
     },
     //GET: /order
     getOrder: async(req,res)=>{
-        if(req.query.id != null){
+        if(req.query.id === undefined){
+            let listOrder=await orderModel.getOrder(req.session.user.userID,0);
+            res.render("vwOrder/Order_buyer",{listOrder: listOrder});
+        }
+        else{ //GET: /order?id=1
             console.log(req.query.id);
             let listOrder=await orderModel.getOrderDetail(req.query.id);
             console.log("list:",listOrder)
@@ -23,10 +29,6 @@ module.exports={
                 delivery: listOrder.delivery,
                 product: listOrder.product
             })
-        }
-        else{ //GET: /order?id=1
-            let listOrder=await orderModel.getOrder(123,0);
-            res.render("vwOrder/Order_buyer",{listOrder: listOrder});
         }
     },
     

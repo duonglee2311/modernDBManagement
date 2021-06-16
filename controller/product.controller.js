@@ -59,6 +59,7 @@ module.exports={
     },
     //[POST]: /product/add
     handleAddProduct: async(req, res, next) => {
+        req.body.sellerName = req.session.user.fullname;
         const product = new Product(req.body);
         // console.log(product);
         product.save()

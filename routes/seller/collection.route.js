@@ -1,5 +1,5 @@
 const express=require('express');
-const controller=require('../controller/collection.controller');
+const controller=require('../../controller/collection.controller');
 const router=express.Router();
 
 

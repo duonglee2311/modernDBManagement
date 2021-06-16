@@ -26,7 +26,8 @@ module.exports={
        let sellerID = req.query.sellerID;
        let productName = req.query.productName;
        let quantity = 1;
-        let detail = {name:productName, image:image, price:price, sellerID:sellerID, quantity: quantity};
+       let sellerName = req.query.sellerName;
+        let detail = {name:productName, image:image, price:price, sellerID:sellerID, quantity: quantity, sellerName: sellerName};
         let result = await cartModel.addCart(userID, productID, detail);
         if(result === "OK"){
             // alert("Thêm sản phẩm vào giỏ hàng thành công!");

@@ -77,7 +77,10 @@ module.exports={
                isSuccess= (await db.mergeNode(productNode,productValue)).summary.counters._stats.nodesCreated;
                console.log('product',isSuccess);
                // Tạo seller
-               let sellerValue=`{id: "${element.idSeller}", name: "${element.nameSeller}"}`;
+               console.log("=======");
+               console.log(element);
+               console.log("=======");
+               let sellerValue=`{id: "${element.sellerID}", name: "${element.sellerName}"}`;
                isSuccess= (await db.mergeNode(sellerNode,sellerValue)).summary.counters._stats.nodesCreated;
                console.log('seller:', isSuccess);
                //Tạo reelationship giữa product và seller

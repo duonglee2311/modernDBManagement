@@ -34,7 +34,12 @@ module.exports={
     
     getOrderSaler: async(req, res)=>{
         //GET: /order/edit?id=1
-        if(req.query.id != null){
+        if(req.query.id === undefined){
+            let listOrder=await orderModel.getOrder(req.session.user.userID,1);
+            res.render("vwOrder/Order_saler",{listOrder: listOrder});
+        }
+        //GET: /order/edit
+        else{
             console.log('vo day')
             let listOrder=await orderModel.getOrderDetail(req.query.id);
             console.log("o day",listOrder)
@@ -44,17 +49,11 @@ module.exports={
                 product: listOrder.product
             });
         }
-        //GET: /order/edit
-        else{
-            let listOrder=await orderModel.getOrder(369,1);
-            res.render("vwOrder/Order_saler",{listOrder: listOrder});
-        }
-        
     },
     setDelivery: async(req,res)=>{
         if(!req.query.id || !req.query.status){
             console.log('tao thong bao o day');
-            alert("thong tin khong chinh xac");
+            // alert("thong tin khong chinh xac");
             res.redirect('back');
         }
         let status;

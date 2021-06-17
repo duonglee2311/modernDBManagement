@@ -25,7 +25,14 @@ module.exports={
             let dob = result[0].dateofbirth;
             let userInfo = {userID: userID, fullname:fullname, avatar:avatar,address:address,gender:gender,password:password, phoneNumber:phoneNumber, tikixu:tikixu, username:username,dob:dob};
             req.session.user = userInfo;
-            res.redirect('/');
+            if(String(username) === "admin"){
+                res.redirect('/admin');
+            }else if(String(username) === "nguoibanhang"){
+                res.redirect('/seller');
+            }else{
+                res.redirect('/');
+            }
+            
         }else{
             res.redirect('/login');
         }

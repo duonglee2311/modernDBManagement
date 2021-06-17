@@ -118,7 +118,7 @@ module.exports={
             return -1;
         }
         results= await db.matchNode(nodeList,nodeExpression,results,isSorted);
-        console.log('abc: ',results.records[0].keys);
+        // console.log('abc: ',results.records[0].keys);
         orderList=getResult(results);
         orderList.forEach(item=>{
             let dateValue=new Date(parseInt(item.orderDate));

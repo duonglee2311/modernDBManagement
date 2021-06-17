@@ -8,7 +8,10 @@ module.exports={
         if(req.query.id === undefined){
             Collection.find({seller: req.session.user.userID})
                 .then(collections =>{
-                    res.render("vwCollection/Collection_index",{collections: mutipleMongooseToObject(collections)});
+                    res.render("vwCollection/Collection_index",{
+                        collections: mutipleMongooseToObject(collections),
+                        layout: 'seller',
+                    });
                 })
                 .catch(next);
         }
@@ -21,7 +24,10 @@ module.exports={
                     Product.find({seller:req.session.user.userID})
                         .then(products =>{
                             productList = mutipleMongooseToObject(products);
-                            res.render("vwCollection/Collection_edit",{collection: colectionDetail,products: productList,productsInCollection: productsInCollection});
+                            res.render("vwCollection/Collection_edit",{
+                                collection: colectionDetail,products: productList,productsInCollection: productsInCollection,
+                                layout: 'seller',
+                            });
                         })
                         .catch(next);
                 })
@@ -31,7 +37,9 @@ module.exports={
     //GET: /collection/create
     createCollection: async(req, res) =>{
 
-        res.render("vwCollection/Collection_create");
+        res.render("vwCollection/Collection_create",{
+            layout: 'seller',
+        });
     },
     //[POST]: /collection/create 
     handleCreateCollection: async(req, res, next) =>{
@@ -58,10 +66,12 @@ module.exports={
         Collection.findById(collectionID)
             .then((coll)=>{
                 collect = mongooseToObject(coll);
+                // console.log(collect);
                 var temp = collect.listProduct;
+                console.log(temp);
                 var temp1=[];
                 temp1.push(productAdd);
-                if(temp[0] != undefined){
+                if(temp != undefined){
                     temp.push(temp1[0]);
                 }else{
                     temp = temp1;

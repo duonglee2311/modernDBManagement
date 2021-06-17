@@ -5,7 +5,7 @@ const Collection = new Schema({
     // idCollection: {type}
     nameCollection: {type: String},
     productID: {type: String},
-    listProduct: {type: Object},
+    listProduct: {type: Array},
     seller: {type: String},
     collectionThumb: {type: String},
     collectionDescription: {type: String},

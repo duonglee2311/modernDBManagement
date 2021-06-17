@@ -36,7 +36,10 @@ module.exports={
         //GET: /order/edit?id=1
         if(req.query.id === undefined){
             let listOrder=await orderModel.getOrder(req.session.user.userID,1);
-            res.render("vwOrder/Order_saler",{listOrder: listOrder});
+            res.render("vwOrder/Order_saler",{
+                listOrder: listOrder,
+                layout: 'seller',
+            });
         }
         //GET: /order/edit
         else{
@@ -46,7 +49,8 @@ module.exports={
             res.render("vwOrder/Order_saler_edit",{
                 orderInfo: listOrder.orderInfo[0],
                 delivery: listOrder.delivery,
-                product: listOrder.product
+                product: listOrder.product,
+                layout: 'seller',
             });
         }
     },

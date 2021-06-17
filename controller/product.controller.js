@@ -35,7 +35,10 @@ module.exports={
         if(req.query.id === undefined){
             Product.find({seller: req.session.user.userID})
                 .then(products =>{
-                    res.render("vwProduct/Product_list_edit",{products: mutipleMongooseToObject(products)});
+                    res.render("vwProduct/Product_list_edit",{
+                        products: mutipleMongooseToObject(products),
+                        layout: 'seller',
+                    });
                 })
                 .catch(next);
         }
@@ -55,7 +58,9 @@ module.exports={
     },
     //[GET]: /product/add 
     addProduct: async(req, res) => {
-        res.render('vwProduct/Product_add');
+        res.render('vwProduct/Product_add',{
+            layout:'seller'
+        });
     },
     //[POST]: /product/add
     handleAddProduct: async(req, res, next) => {
@@ -63,7 +68,7 @@ module.exports={
         const product = new Product(req.body);
         // console.log(product);
         product.save()
-            .then(()=>res.redirect(`/product/edit`))
+            .then(()=>res.redirect(`/seller/product/edit`))
             .catch( error => {
                 res.send(error);
             });

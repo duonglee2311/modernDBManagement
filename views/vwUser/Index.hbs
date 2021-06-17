@@ -23,7 +23,7 @@
       <th scope="col">Ngày sinh</th>
       <th scope="col">SĐT</th>
       <th scope="col">Thao tác</th>
-      <th scope="col"><a href="/user/create" class="btn btn-primary">Thêm User</a></th>
+      <th scope="col"><a href="/admin/create" class="btn btn-primary">Thêm User</a></th>
     </tr>
   </thead>
   <tbody>
@@ -36,8 +36,8 @@
       <td>{{this.dateofbirth}}</td>
       <td>{{this.phonenum}}</td>
       <td colspan="2">
-          <a href="/user/edit/{{this.id}}" class="link">Sửa</a>
-          <a href="/user/{{this.id}}/delete" class="link" >Xóa</a>
+          <a href="/admin/edit/{{this.id}}" class="link">Sửa</a>
+          <a href="/admin/{{this.id}}/delete" class="link" >Xóa</a>
       </td>
     </tr>
     {{/each}}
@@ -45,7 +45,7 @@
 </table>
 
 
-<div class="modal" tabindex="-1" role="dialog" id="delete-course-modal">
+{{!-- <div class="modal" tabindex="-1" role="dialog" id="delete-course-modal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -63,4 +63,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}

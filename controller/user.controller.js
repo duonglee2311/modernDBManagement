@@ -7,7 +7,10 @@ module.exports={
         var result =await userModel.getAllUser();
         // console.log('result: ',result);
         // res.json(result);
-        res.render("vwUser/Index",{user:result});
+        res.render("vwUser/Index",{
+            user:result,
+            layout: 'admin',
+        });
     },
     //[GET] /user/:id
     editUser: async(req, res) => {

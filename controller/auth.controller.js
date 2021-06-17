@@ -23,11 +23,13 @@ module.exports={
             let tikixu = result[0].tikixu;
             let username = result[0].username;
             let dob = result[0].dateofbirth;
-            let userInfo = {userID: userID, fullname:fullname, avatar:avatar,address:address,gender:gender,password:password, phoneNumber:phoneNumber, tikixu:tikixu, username:username,dob:dob};
+            let permission = result[0].permission;
+            let userInfo = {userID: userID, fullname:fullname, avatar:avatar,address:address,gender:gender,password:password, phoneNumber:phoneNumber, tikixu:tikixu, username:username,dob:dob,permission:permission};
+            
             req.session.user = userInfo;
-            if(String(username) === "admin"){
+            if(String(permission) === "admin"){
                 res.redirect('/admin');
-            }else if(String(username) === "nguoibanhang"){
+            }else if(String(permission) === "seller"){
                 res.redirect('/seller');
             }else{
                 res.redirect('/');
@@ -57,8 +59,9 @@ module.exports={
         var dob = req.body.dob;
         var avatar = req.body.avatar;
         var address = req.body.address;
+        var permission = req.body.permission;
 
-        var result = userModel.storeUser(username, password, fullname, phoneNumber, gender, dob, avatar, address);
+        var result = userModel.storeUser(username, password, fullname, phoneNumber, gender, dob, avatar, address, permission);
         res.redirect(`/login`);
     },
     //[GET]

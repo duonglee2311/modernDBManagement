@@ -33,20 +33,20 @@
         </ul>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0" method="POST" action="/search/category">
+    {{!-- <form class="form-inline my-2 my-lg-0" method="POST" action="/search/category">
       <input type="hidden" name="sortBy" value="Highest Rated">
       <input class="form-control mr-sm-2" type="search" name="searchValue" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
         <i class="fa fa-search" aria-hidden="true"></i>
         Search
       </button>
-    </form>
+    </form> --}}
     <form id="frmLogout" method="POST" action="/account/logout"></form>
     <ul class="navbar-nav ml-auto">
       {{#if isUser}}
-      <li class="nav-item">
+      {{!-- <li class="nav-item">
         <a class="nav-link" href="/cart?userID={{isUser.userID}}">Shopping Cart</span></a>
-      </li>
+      </li> --}}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">

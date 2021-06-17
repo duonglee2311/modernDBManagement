@@ -19,7 +19,7 @@ module.exports=function(app){
     app.post('/register',auth.handleSign_up);
     app.get('/find_pass',auth.find_pass);
     app.use('/product',restrict.user, require('../routes/user/product.route'));
-    app.use('/order',require('../routes/user/order.route'));
+    app.use('/order',restrict.user, require('../routes/user/order.route'));
     
     // app.use('/order',require('../routes/order.route'));
     

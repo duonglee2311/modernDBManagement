@@ -4,10 +4,10 @@ const router=express.Router();
 
 
 // router.get('/edit',controller.getOrderSaler);
-router.get('/',controller.getOrderSaler);
+router.get('/',controller.getOrder);
 router.get('/checkout',controller.getcheckout);
 router.post('/checkout',controller.setCheckout);
-// router.get('/update',controller.setDelivery);
+router.get('/update',controller.setDelivery);
 
 
 module.exports = router;

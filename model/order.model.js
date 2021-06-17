@@ -123,8 +123,9 @@ module.exports={
         orderList.forEach(item=>{
             let dateValue=new Date(parseInt(item.orderDate));
             item.orderDate=dateValue.getDate()+'/'+dateValue.getMonth()+'/'+dateValue.getFullYear();
-        })
-        console.log('order',orderList)
+        });
+        // console.log('order',orderList)
+        
         return orderList;
         // lấy danh sách đơn hàng của buyer theo thứ tự delivery
     },

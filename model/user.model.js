@@ -17,8 +17,8 @@ module.exports = {
         var result = await client.execute(query,[]);
         return result.rows;
     },
-    storeUser: async (username, password, fullname, phoneNumber, gender, dob, avatar, address) => {
-        var query = `INSERT INTO tikin.user (id,username, password, fullname, phonenum, gender, dateofbirth, avatar,address) VALUES(uuid(),'${username}','${password}','${fullname}','${phoneNumber}','${gender}','${dob}','${avatar}','${address}')`;
+    storeUser: async (username, password, fullname, phoneNumber, gender, dob, avatar, address, permission) => {
+        var query = `INSERT INTO tikin.user (id,username, password, fullname, phonenum, gender, dateofbirth, avatar,address, permission) VALUES(uuid(),'${username}','${password}','${fullname}','${phoneNumber}','${gender}','${dob}','${avatar}','${address}','${permission}')`;
         var result = await client.execute(query,[]);
         return result;
     },

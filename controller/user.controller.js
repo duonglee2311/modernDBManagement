@@ -62,6 +62,15 @@ module.exports={
     //[GET] /user/profile/:id
     profileUser(req, res){
         // console.log(req.session.user);
-        res.render('vwuser/profile',{user : req.session.user});
+        let layout = 'main';
+        if(req.session.user.permission === 'admin'){
+            layout = 'admin';
+        }else if(req.session.user.permission === 'seller'){
+            layout = 'seller'
+        }
+        res.render('vwuser/profile',{
+            user : req.session.user,
+            layout: layout
+        });
     },
 }

@@ -38,13 +38,6 @@ module.exports={
         //GET: /order/edit?id=1
         if(req.query.id === undefined){
             let listOrder=await orderModel.getOrder(req.session.user.userID,1);
-            // for(let i = 0; i < listOrder.length; i++){
-            //     for(let j = 1; j <listOrder.length; j++){
-            //         if(listOrder[i].orderId === listOrder[j].orderId){
-            //             listOrder.splice(j, 1);
-            //         }
-            //     }
-            // };
             res.render("vwOrder/Order_saler",{
                 listOrder: listOrder,
                 layout: 'seller',

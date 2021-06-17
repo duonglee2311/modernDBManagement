@@ -106,11 +106,11 @@ module.exports={
         if(nodeType==0){
             // lấy danh sách đơn hàng của buyer theo thứ tự delivery
             nodeList=`(n:${buyerNode})-[${Order_R_Buyr}]-(o:${orderNode})`;//-[d:${Order_R_delivery}]-(deli:${deliveryNode})`;
-            nodeExpression=`n.userID="${nodeID}"`;
+            nodeExpression=`n.userID="${nodeID}" WITH DISTINCT o`;
             results='o.orderId as orderId,o.orderName as orderName,o.totalAmount as totalAmount ,o.orderDate as orderDate,o.currentStatus as delivery';// ,deli.name as delivery';
         }else if(nodeType==1){
             nodeList=`(n:${sellerNode})-[${product_R_Seller}]-(p:${productNode})-[:${product_R_Order}]-(o:${orderNode})`;
-            nodeExpression=`n.id="${nodeID}"`;
+            nodeExpression=`n.id="${nodeID}" WITH DISTINCT o`;
             results='o.orderId as orderId,o.orderName as orderName,o.totalAmount as totalAmount ,o.orderDate as orderDate,o.currentStatus as delivery';
             isSorted='o.orderDate';
         }
@@ -118,7 +118,7 @@ module.exports={
             return -1;
         }
         results= await db.matchNode(nodeList,nodeExpression,results,isSorted);
-        // console.log('abc: ',results.records[0].keys);
+        // console.log('abc: ',results);
         orderList=getResult(results);
         orderList.forEach(item=>{
             let dateValue=new Date(parseInt(item.orderDate));

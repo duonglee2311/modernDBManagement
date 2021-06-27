@@ -277,11 +277,11 @@ ul {
                     </div>
                 </div>
                 </div>
-                <div class="order_buttons"> 
-                    <button type="button" class="btn btn-secondary btn-lg"><i class="fas fa-arrow-circle-left"></i><a href="/" style="text-decoration: none;"> Tiếp tục mua sắm</a></button> 
+                <div class="order_buttons" id="order_buttons"> 
+                    {{!-- <button type="button" class="btn btn-secondary btn-lg"><i class="fas fa-arrow-circle-left"></i><a href="/" style="text-decoration: none;"> Tiếp tục mua sắm</a></button> 
                     {{#if orderInfo.currentStatus}}
                         <a type="button" class="btn btn-primary btn-lg" href="/order/update?id={{orderInfo.orderId}}&status=Cancelled"><i class="fas fa-trash-alt"></i> Hủy đơn hàng</a>
-                    {{/if}}
+                    {{/if}} --}}
                     {{!-- <button type="button" class="button cart_button_checkout"><a href="/order/checkout" style="text-decoration: none;;"></a>Đặt hàng</button> --}}
                 </div>
             </div>
@@ -289,3 +289,14 @@ ul {
         </div>
     </div>
 </div>
+{{#section 'js'}}
+<script>
+    var status=`{{orderInfo.currentStatus}}`;
+    $(document).ready(function(){
+        $('#order_buttons').append(`<button type="button" class="btn btn-secondary btn-lg"><i class="fas fa-arrow-circle-left"></i><a href="/" style="text-decoration: none;"> Tiếp tục mua sắm</a></button> `);
+        if(status=='Processing'){
+            $('#order_buttons').append(`<a type="button" class="btn btn-primary btn-lg" href="/order/update?id={{orderInfo.orderId}}&status=Cancelled"><i class="fas fa-trash-alt"></i> Hủy đơn hàng</a>`);
+        }
+    });
+</script>
+{{/section}}

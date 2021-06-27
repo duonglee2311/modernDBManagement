@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const Comment = new Schema({
     idProduct: {type: String},
     idUser:{type: String},
+    idSeller: {type: String},
     fullnameUser: {type: String},
     avatarUser: {type: String},
     comment: {type: String},

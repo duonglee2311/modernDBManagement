@@ -1,0 +1,81 @@
+<style>
+    .param {
+        margin-bottom: 7px;
+        line-height: 1.4;
+    }
+
+    .param-inline dt {
+        display: inline-block;
+    }
+
+    .param dt {
+        margin: 0;
+        margin-right: 7px;
+        font-weight: 600;
+    }
+
+    .param-inline dd {
+        vertical-align: baseline;
+        display: inline-block;
+    }
+
+    .param dd {
+        margin: 0;
+        vertical-align: baseline;
+    }
+
+    .shopping-cart-wrap .price {
+        color: #007bff;
+        font-size: 18px;
+        font-weight: bold;
+        margin-right: 5px;
+        display: block;
+    }
+
+    var {
+        font-style: normal;
+    }
+
+    .media img {
+        margin-right: 1rem;
+    }
+
+    .img-sm {
+        width: 90px;
+        max-height: 75px;
+        object-fit: cover;
+    }
+</style>
+
+
+
+
+<div class="card">
+    <table class="table table-hover shopping-cart-wrap">
+        <thead class="text-muted">
+            <tr>
+                <th scope="col" width="500">Nội dung comment</th>
+                <th scope="col" width="250">Người dùng comment</th>
+                <th scope="col" width="250">Sản phẩm</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each comments}}
+            <tr>
+                <td>
+                    <p>{{this.comment}}</p>
+                </td>
+                <td>
+                    <p>{{this.idUser}}</p>
+                </td>
+                <td>
+                    <a href="">{{this.idSeller}}</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+</div>
+
+

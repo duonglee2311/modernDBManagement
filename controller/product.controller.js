@@ -29,6 +29,17 @@ module.exports={
                 .catch(next);
         }
     },
+    //GET: /comment
+    getComment: async(req, res, next) =>{
+        Comment.find({idSeller: req.session.user.userID})
+            .then(comments=> {
+                res.render("vwProduct/Product_comment",{
+                    comments: mutipleMongooseToObject(comments),
+                    layout:'seller',
+                });
+            })
+            .catch(next);
+    },
     //GET: /product/edit
     editProduct: async(req, res,next) => {
         // console.log(req.query.id);

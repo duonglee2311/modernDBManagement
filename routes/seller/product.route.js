@@ -10,6 +10,7 @@ router.post('/edit',controller.handleEditProduct);
 router.get('/add', controller.addProduct);
 router.post('/add',controller.handleAddProduct);
 router.get('/delete',controller.deleteProduct);
+router.get('/comment', controller.getComment);
 // router.post('/:id/comment',controller.handleAddComment);
 
 module.exports = router;

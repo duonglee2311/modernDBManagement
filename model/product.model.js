@@ -9,8 +9,7 @@ const Product = new Schema({
     sellerName: {type: String},
     category: {type: String},
     img_thumb: {type: String},
-    type: {type: String},
-    qty: {type: Number},
+    type: {type: String}
 },{
     timestamps: true,
 });

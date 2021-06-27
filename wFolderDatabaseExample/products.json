@@ -1,0 +1,151 @@
+[{
+  "_id": {
+    "$oid": "60cac5f6810aa059f820897d"
+  },
+  "nameProduct": "Điện thoại Samsung Galaxy A32-Hàng Chính Hãng",
+  "price": 250,
+  "description": "Dung lượng pin\t5000 mAh\r\nBluetooth\tBluetooth v5.0\r\nThương hiệu\tSamsung\r\nCamera sau\t64.0 MP + 8.0 MP + 5.0 MP + 5.0 MP\r\nCamera trước\t20.0 MP\r\nHỗ trợ thẻ nhớ ngoài\tMicroSD\r\nChip set\tMediaTek Helio G80 8 nhân\r\nTốc độ CPU\t2 nhân 2.0 GHz & 6 nhân 1.8 GHz\r\nKết nối dữ liệu\tBluetooth, Wifi, 3G, 2G, 4G\r\nĐèn Flash\tCó\r\nLoại/ Công nghệ màn hình\tSuper AMOLED\r\nFM radio\tKhông\r\nGPS\tA-GPSGLONASS\r\nHỗ trợ 4G\tCó",
+  "img_thumb": "https://salt.tikicdn.com/cache/200x200/ts/product/c8/2f/35/81aa558928b76a794e12541311475a12.jpg",
+  "qty": 10,
+  "type": "Điện thoại",
+  "seller": "68c91620-4c37-468f-af2c-f998ec47beaa",
+  "sellerName": "Tam Thuận Phát",
+  "createdAt": {
+    "$date": "2021-06-17T03:48:06.034Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-17T03:48:06.034Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60cac61f810aa059f820897e"
+  },
+  "nameProduct": "Điện thoại Vivo Y12s - Hàng Chính Hãng",
+  "price": 130,
+  "description": "Dung lượng pin\t5000 mAh\r\nBluetooth\tv5.0\r\nThương hiệu\tVivo\r\nXuất xứ thương hiệu\tTrung Quốc\r\nCamera sau\tChính 13 MP & Phụ 2 MP\r\nCamera trước\t8 MP\r\nHỗ trợ thẻ nhớ ngoài\tMicroSD\r\nChip đồ họa (GPU)\tIMG PowerVR GE8320\r\nChip set\tMediaTek Helio P35 8 nhân\r\nChức năng khác\tOTG\r\nTốc độ CPU\t4 nhân 2.3 GHz & 4 nhân 1.8 GHz\r\nKết nối dữ liệu\t2G, 3G, 4G, Bluetooth, Wifi",
+  "img_thumb": "https://salt.tikicdn.com/cache/280x280/ts/product/b3/95/fc/70f6724a71608f645d6435ebf5e0039b.jpg",
+  "qty": 10,
+  "type": "Điện thoại",
+  "seller": "68c91620-4c37-468f-af2c-f998ec47beaa",
+  "sellerName": "Tam Thuận Phát",
+  "createdAt": {
+    "$date": "2021-06-17T03:48:47.712Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-17T03:48:47.712Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60cac644810aa059f820897f"
+  },
+  "nameProduct": "Điện Thoại Samsung Galaxy A21s - Hàng Chính Hãng",
+  "price": 140,
+  "description": "Dung lượng pin\t5000mAh\r\nThời gian pin\tThời gian sử dụng Internet (LTE) (Hours): Lên tới 23 - Thời gian sử dụng Internet (Wi-Fi) (Giờ): Lên tới 23 - Thời gian phát lại Video (Giờ): Lên tới 21 - Thời gian phát Audio (Giờ): Lên tới 109 - Thời gian thoại (4G LTE) (Giờ): Lên tới 54\r\nBluetooth\tBluetooth v5.0 (LE lên đến 2 Mbps)\r\nThương hiệu\tSamsung\r\nXuất xứ thương hiệu\tHàn Quốc\r\nCamera sau\t48.0 MP + 8.0 MP + 2.0 MP + 2.0 MP\r\nCamera trước\t13.0 MP\r\nHỗ trợ thẻ nhớ ngoài\tMicroSD (Up to 512GB)\r\nKết nối khác\tGPS, Glonass, Beidou, Galileo\r\nTốc độ CPU\t2GHz\r\nKích thước\t\r\n163.7 x 75.3 x 8.9 (HxWxD, mm)\r\n\r\nLoại/ Công nghệ màn hình\tPLS TFT LCD\r\nFM radio\tKhông\r\nPhụ kiện đi kèm\tCáp, Sạc, Sách Hướng Dẫn, Cây Lấy Sim..",
+  "img_thumb": "https://salt.tikicdn.com/cache/280x280/ts/product/c5/aa/ef/9efc7d9f1f8b019732fdee8cb12bd8e1.jpg",
+  "qty": 10,
+  "type": "Điện thoại",
+  "seller": "68c91620-4c37-468f-af2c-f998ec47beaa",
+  "sellerName": "Tam Thuận Phát",
+  "createdAt": {
+    "$date": "2021-06-17T03:49:24.033Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-17T03:49:24.033Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60cac668810aa059f8208980"
+  },
+  "nameProduct": "Điện thoại Xiaomi POCO M3 - HÀNG CHÍNH HÃNG",
+  "price": 150,
+  "description": "Dung lượng pin\t6000 mAh\r\nBluetooth\tA2DP, LE\r\nThương hiệu\tXiaomi\r\nCamera sau\tChính 48 MP & Phụ 2 MP, 2 MP\r\nCamera trước\t8 MP\r\nHỗ trợ thẻ nhớ ngoài\tMicroSD\r\nChip đồ họa (GPU)\tAdreno 610\r\nChip set\tSnapdragon 662 8 nhân\r\nTốc độ CPU\t4 nhân 2.0 GHz & 4 nhân 1.8 GHz\r\nLoại/ Công nghệ màn hình\tIPS LCD\r\nFM radio\tCó\r\nGhi âm\tcó\r\nHỗ trợ 4G\tcó\r\nPhụ kiện đi kèm\t\r\nĐiện thoại, cáp sạc, củ sạc, sách hướng dẫn.",
+  "img_thumb": "https://salt.tikicdn.com/cache/280x280/ts/product/4c/e6/b1/68baa6d96f1a6cfe03276b4fdfa98489.png",
+  "qty": 10,
+  "type": "Điện thoại",
+  "seller": "68c91620-4c37-468f-af2c-f998ec47beaa",
+  "sellerName": "Tam Thuận Phát",
+  "createdAt": {
+    "$date": "2021-06-17T03:50:00.697Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-17T03:50:00.697Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60cac68c810aa059f8208981"
+  },
+  "nameProduct": "Điện Thoại Samsung Galaxy A71 (8GB/128GB) - Hàng Chính Hãng",
+  "price": 350,
+  "description": "Dung lượng pin\t4500 mAh\r\nBluetooth\tA2DP, LE, v5.0\r\nThương hiệu\tSamsung\r\nXuất xứ thương hiệu\tHàn Quốc\r\nCamera sau\tChính 64 MP & Phụ 12 MP, 5 MP, 5 MP\r\nCamera trước\t32 MP\r\nHỗ trợ thẻ nhớ ngoài\tMicroSD\r\nChip đồ họa (GPU)\tAdreno 618\r\nChip set\tSnapdragon 730 8 nhân\r\nChức năng khác\tSạc pin nhanh, Đèn pin, Chặn tin nhắn, Mặt kính 2.5D, Màn hình luôn hiển thị AOD, Chặn cuộc gọi",
+  "img_thumb": "https://salt.tikicdn.com/cache/280x280/ts/product/0f/63/1a/f45d7efe3c85767082904eb1d5ee8a99.jpg",
+  "qty": 10,
+  "type": "Điện thoại",
+  "seller": "68c91620-4c37-468f-af2c-f998ec47beaa",
+  "sellerName": "Tam Thuận Phát",
+  "createdAt": {
+    "$date": "2021-06-17T03:50:36.688Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-17T03:50:36.688Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60cac6b8810aa059f8208982"
+  },
+  "nameProduct": "Điện Thoại iPhone 12 Pro Max 128GB - Hàng Chính Hãng",
+  "price": 1500,
+  "description": "Băng tần 3G\tHSPA 42.2/5.76 Mbps, EV-DO Rev.A 3.1 Mbps\r\nBluetooth\tV5.0\r\nThương hiệu\tApple\r\nXuất xứ thương hiệu\tTrung Quốc\r\nCamera sau\t12 MP, f/1.6, 26mm (wide), 1.4µm, dual pixel PDAF, OIS; 12 MP, f/2.0, 52mm (telephoto), 1/3.4\", 1.0µm, PDAF, OIS, 2x optical zoom; 12 MP, f/2.4, 120˚, 13mm (ultrawide), 1/3.6\" TOF 3D LiDAR scanner (depth)\r\nCamera trước\t12 MP, f/2.2, 23mm (wide), 1/3.6\" SL 3D, (depth/biometrics sensor)\r\nHỗ trợ thẻ nhớ ngoài\tKhông\r\nChip đồ họa (GPU)\tApple GPU (4-core graphics)\r\nChip set\tApple A14 Bionic (5 nm)\r\nNFC\tCó\r\nKết nối dữ liệu\t3G, 4G, Bluetooth, GPRS, Wifi\r\nĐèn Flash\tCó\r\nKích thước\t160.8 x 78.1 x 7.4 mm\r\nLoại/ Công nghệ màn hình\tSuper Retina XDR OLED, HDR10, Dolby Vision, Wide color gamut, True-tone",
+  "img_thumb": "https://salt.tikicdn.com/cache/280x280/ts/product/86/dd/0c/116f1383ebab5e5af8e71301a80d1b17.jpg",
+  "qty": 10,
+  "type": "Điện thoại",
+  "seller": "68c91620-4c37-468f-af2c-f998ec47beaa",
+  "sellerName": "Tam Thuận Phát",
+  "createdAt": {
+    "$date": "2021-06-17T03:51:20.018Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-17T03:51:20.018Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d84585ff69c94264f80fb4"
+  },
+  "nameProduct": "Điện Thoại Oppo Reno 5 (8GB/128G) - Hàng Chính Hãng",
+  "price": 300,
+  "description": "SKU\t3109864453575\r\nDung lượng pin\t4310mAh (Typ)\r\nBluetooth\tV 5.1\r\nThương hiệu\tOPPO\r\nXuất xứ thương hiệu\tTrung Quốc\r\nCamera sau\tChính 64 MP & Phụ 8 MP, 2 MP, 2 MP\r\nCamera trước\t32 MP\r\nHỗ trợ thẻ nhớ ngoài\tHỗ trợ thẻ nhớ tối đa 128GB\r\nChip đồ họa (GPU)\tAdreno 620\r\nChip set\tQualcomm Snapdragon 720G\r\nChức năng khác\tChặn cuộc gọi, Đa cửa sổ (chia đôi màn hình), Nhân bản ứng dụng, Chặn tin nhắn\r\nKết nối khác\tOTG\r\nTốc độ CPU\ttối đa 2.3GHz",
+  "img_thumb": "https://salt.tikicdn.com/cache/200x200/ts/product/3b/bc/93/99cfcf5400182bf7f17adb53141825c0.jpg",
+  "type": "Điện thoại",
+  "seller": "a861ca46-85e9-45d1-a3c2-416d71b996e4",
+  "sellerName": "Kiều Văn Đoàn",
+  "createdAt": {
+    "$date": "2021-06-27T09:31:49.666Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-27T09:31:49.666Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d845afff69c94264f80fb5"
+  },
+  "nameProduct": "Điện Thoại Xiaomi Redmi Note 10 (4GB/64GB) - Hàng Chính Hãng",
+  "price": 200,
+  "description": "SKU\t7146224907365\r\nDung lượng pin\t5000 mAh\r\nBluetooth\tv5.0\r\nThương hiệu\tXiaomi\r\nXuất xứ thương hiệu\tTrung Quốc\r\nCamera sau\tChính 48 MP & Phụ 8 MP, 2 MP, 2 MP\r\nCamera trước\t13 MP\r\nHỗ trợ thẻ nhớ ngoài\tMicroSD\r\nChip đồ họa (GPU)\tAdreno 612\r\nChip set\tSnapdragon 678 8 nhân\r\nTốc độ CPU\t2 nhân 2.2 GHz & 6 nhân 1.7 GHz\r\nLoại/ Công nghệ màn hình\tAMOLED\r\nGPS\tCó\r\nHỗ trợ 4G\tCó",
+  "img_thumb": "https://salt.tikicdn.com/cache/280x280/ts/product/87/38/26/ceb0c7ecf5f88ece685a577497b0b4a7.png",
+  "type": "Điện thoại",
+  "seller": "a861ca46-85e9-45d1-a3c2-416d71b996e4",
+  "sellerName": "Kiều Văn Đoàn",
+  "createdAt": {
+    "$date": "2021-06-27T09:32:31.213Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-27T09:32:31.213Z"
+  },
+  "__v": 0
+}]

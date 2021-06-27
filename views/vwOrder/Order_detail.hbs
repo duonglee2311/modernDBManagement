@@ -242,7 +242,9 @@ ul {
                             <div class="col-md-3 order_item_name">
                                 <div class="order_item_title">Sản phẩm</div>
                                 <div class="order_item_text">{{this.name}}</div>
-                                <div class="order_item_text">SKU: {{this.id}}</div>
+                                <div class="order_item_text">
+                                    <a href="/product?id={{this.id}}" style="text-decoration: none;">SKU: {{this.id}}</a>
+                                </div>
                             </div>
                             <div class="col-md-2 order_item_quantity">
                                 <div class="order_item_title">Đơn giá</div>

@@ -1,7 +1,7 @@
 const Product = require('../model/product.model');
 const Collection = require('../model/collection.model');
 const {mutipleMongooseToObject,mongooseToObject} = require('../utils/mongoose');
-const { collection } = require('../model/product.model');
+
 module.exports={
     //GET: /collection
     getCollection: async(req,res,next)=>{
@@ -105,6 +105,12 @@ module.exports={
                     .then(() => res.redirect('back'))
                     .catch(next);
             })
+            .catch(next);
+    },
+    //[GET]: /collection/deleteCollection?id=
+    deleteCollection: async(req, res, next)=>{
+        Collection.deleteOne({_id: req.query.id})
+            .then(() => res.redirect('back'))
             .catch(next);
     }
     

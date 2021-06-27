@@ -17,7 +17,7 @@
   <img src="{{user.avatar}}" alt="" id="img_thumb_">
 </div>
 
-<form id="edit_user" method="POST" action="/user/edit/{{user.userID}}">
+<form id="edit_user" method="POST" action="">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="username">Username</label>
@@ -47,7 +47,7 @@
     </div>
     <div class="form-group col-md-2">
       <label for="dob">Ngày sinh</label>
-      <input type="date" class="form-control" id="dob" value="{{user.dateofbirth}}" name="dob">
+      <input type="date" class="form-control" id="dob" value="{{user.dob}}" name="dob">
     </div>
     <div class="form-group col-md-2">
       <label for="avatar">Avatar</label>

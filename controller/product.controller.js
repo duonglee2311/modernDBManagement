@@ -64,7 +64,7 @@ module.exports={
     //[POST] /product/edit
     handleEditProduct: async(req, res,next)=>{
         Product.updateOne({_id: req.query.id},req.body)
-            .then(() => res.redirect('/product/edit'))
+            .then(() => res.redirect('/seller/product/edit'))
             .catch(next);
     },
     //[GET]: /product/add 

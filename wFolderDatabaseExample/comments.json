@@ -1,0 +1,118 @@
+[{
+  "_id": {
+    "$oid": "60cec5f9de3d313734bbd2f1"
+  },
+  "comment": "Sản phẩm tốt",
+  "idProduct": "60cac5f6810aa059f820897d",
+  "idUser": "2fecff2f-45f8-40aa-ac1f-98afc67e7139",
+  "fullnameUser": "Kiều Văn Đoàn",
+  "avatarUser": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyCs3Mw688GnsbxU5eXux3AOZSXzmKqzf-WQ&usqp=CAU",
+  "createdAt": {
+    "$date": "2021-06-20T04:37:13.265Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-20T04:37:13.265Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60cefd7bd3658301981e1c1f"
+  },
+  "comment": "Sản phẩm quá xịn",
+  "idProduct": "60cac5f6810aa059f820897d",
+  "idUser": "2fecff2f-45f8-40aa-ac1f-98afc67e7139",
+  "fullnameUser": "Kiều Văn Đoàn",
+  "avatarUser": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyCs3Mw688GnsbxU5eXux3AOZSXzmKqzf-WQ&usqp=CAU",
+  "createdAt": {
+    "$date": "2021-06-20T08:34:03.550Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-20T08:34:03.550Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d807918bea082b10d4a650"
+  },
+  "comment": "Mới dùng thử 1 tuần. Thấy okie. Để sài thêm",
+  "idSeller": "68c91620-4c37-468f-af2c-f998ec47beaa",
+  "idProduct": "60cac5f6810aa059f820897d",
+  "idUser": "2fecff2f-45f8-40aa-ac1f-98afc67e7139",
+  "fullnameUser": "Kiều Văn Đoàn",
+  "avatarUser": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyCs3Mw688GnsbxU5eXux3AOZSXzmKqzf-WQ&usqp=CAU",
+  "createdAt": {
+    "$date": "2021-06-27T05:07:29.898Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-27T05:07:29.898Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d8221e939fa828246c4fb7"
+  },
+  "comment": "Sản phẩm quá kém. Sài một 1 tháng mà quá lag không thể tiếp tục sử dụng được.",
+  "idSeller": "68c91620-4c37-468f-af2c-f998ec47beaa",
+  "idProduct": "60cac644810aa059f820897f",
+  "idUser": "2fecff2f-45f8-40aa-ac1f-98afc67e7139",
+  "fullnameUser": "Kiều Văn Đoàn",
+  "avatarUser": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyCs3Mw688GnsbxU5eXux3AOZSXzmKqzf-WQ&usqp=CAU",
+  "createdAt": {
+    "$date": "2021-06-27T07:00:46.802Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-27T07:00:46.802Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d827f3efb3c43bd460c7d1"
+  },
+  "comment": "Sản phẩm rất tốt. Đáng mua trong tầm giá",
+  "idSeller": "68c91620-4c37-468f-af2c-f998ec47beaa",
+  "idProduct": "60cac61f810aa059f820897e",
+  "idUser": "6302f31b-5f11-4110-96de-85f021cdca92",
+  "fullnameUser": "Nguyễn Văn Test",
+  "avatarUser": "https://uploads-ssl.webflow.com/5f5f2b58b1af780151375838/6068a3d425efbe1eafc37179_GaiHot2k__hinh-anh-hot-girl-2k-de-thuong-muon%252B%2525281%252529.jpeg",
+  "createdAt": {
+    "$date": "2021-06-27T07:25:39.877Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-27T07:25:39.877Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d84453ff69c94264f80fb2"
+  },
+  "comment": "Sản phẩm trên sức mong đợi",
+  "idSeller": "68c91620-4c37-468f-af2c-f998ec47beaa",
+  "idProduct": "60cac5f6810aa059f820897d",
+  "idUser": "59c7063e-68bb-4bfe-9fb7-b6f2db08e855",
+  "fullnameUser": "Phạm Thị Toe",
+  "avatarUser": "https://1.bp.blogspot.com/-a-GO0cVmnuE/XcWkLlMcWrI/AAAAAAAATMY/3QfOrHzXeYoRS7qMAzVCa8BrHAwnmCncQCLcBGAsYHQ/s1600/hinh-anh-hot-girl-xinh-han-quoc-wap102-com%2B%25281%2529.jpg",
+  "createdAt": {
+    "$date": "2021-06-27T09:26:43.506Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-27T09:26:43.506Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d844c7ff69c94264f80fb3"
+  },
+  "comment": "Phong cách nhân viên phục vụ rất tốt. Đáng quay lại",
+  "idSeller": "68c91620-4c37-468f-af2c-f998ec47beaa",
+  "idProduct": "60cac5f6810aa059f820897d",
+  "idUser": "dfe9d5bc-a17d-409e-8541-bd29ca26ebbe",
+  "fullnameUser": "Lương Văn Tài",
+  "avatarUser": "https://nld.mediacdn.vn/2019/10/3/anh-mai-dam-15700949680282065760593.jpg",
+  "createdAt": {
+    "$date": "2021-06-27T09:28:39.499Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-27T09:28:39.499Z"
+  },
+  "__v": 0
+}]

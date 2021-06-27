@@ -22,7 +22,9 @@ module.exports={
     },
     //[GET] /user/create
     createUser: async(req, res) => {
-        res.render('vwUser/Create');
+        res.render('vwUser/Create',{
+            layout: 'admin',
+        });
     },
     //[POST] /user/create
     handleCreateUser(req, res){
@@ -49,9 +51,13 @@ module.exports={
         var dob = req.body.dob;
         var avatar = req.body.avatar;
         var address = req.body.address;
-        // console.log(password);
         var result = userModel.updateUser(id,username, password, fullname, phoneNumber, gender, dob, avatar, address);
-        res.redirect(`/user`);
+        if(req.session.user.permission == 'admin'){
+            res.redirect(`/user`);
+        }else{
+            res.redirect(`/user/profile/`+req.session.user.userID);
+        }
+        
     },
     //[GET] /user/:id/delete
     deleteUser(req, res){
@@ -60,8 +66,21 @@ module.exports={
         res.redirect(`/user`);
     },
     //[GET] /user/profile/:id
-    profileUser(req, res){
-        // console.log(req.session.user);
+    profileUser:async(req, res)=>{
+        let temp = await userModel.getOneUser(req.params.id);
+        // console.log(temp);
+        var user;
+        let userID = temp[0].id.toString();
+        let fullname = temp[0].fullname;
+        let address = temp[0].address;
+        let avatar = temp[0].avatar;
+        let gender = temp[0].gender;
+        let password = temp[0].password;
+        let phoneNumber = temp[0].phonenum;
+        let tikixu = temp[0].tikixu;
+        let username = temp[0].username;
+        let dob = temp[0].dateofbirth;
+        var user = {userID: userID, fullname:fullname, avatar:avatar,address:address,gender:gender,password:password, phoneNumber:phoneNumber, tikixu:tikixu, username:username,dob:dob};
         let layout = 'main';
         if(req.session.user.permission === 'admin'){
             layout = 'admin';
@@ -69,7 +88,7 @@ module.exports={
             layout = 'seller'
         }
         res.render('vwuser/profile',{
-            user : req.session.user,
+            user : user,
             layout: layout
         });
     },

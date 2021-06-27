@@ -1,0 +1,8 @@
+MATCH (N) DETACH DELETE N;
+CREATE (:Delivery {name: "Processing"});
+CREATE (:Delivery {name: "Receiving"});
+CREATE (:Delivery {name: "Success"});
+CREATE (:Delivery {name: "Transporting"});
+CREATE (:Delivery {name: "Cancelled"});
+CREATE (:Payment {type: "Cash"});
+CREATE (:Payment {type: "e-wallet"});

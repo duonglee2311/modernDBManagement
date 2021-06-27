@@ -5,5 +5,6 @@ const router=express.Router();
 
 router.get('/',user.getUser);
 router.get('/profile/:id',user.profileUser);
+router.post('/profile/:id', user.handleEditUser);
 
 module.exports = router;

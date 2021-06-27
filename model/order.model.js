@@ -145,6 +145,8 @@ module.exports={
                 item.dateOrder=dateValue.getHours()+":"+dateValue.getMinutes()+" "+dateValue.getDate()+'/'+dateValue.getMonth()+'/'+dateValue.getFullYear();
                 if(item.status=='Processing'){
                     item.status='Tiki đã tiếp nhận đơn hàng, vui lòng đợi cửa hàng xử lý đơn hàng.';
+                }else if(item.status == 'Receiving'){
+                    item.status='Tiki đang xử lý đơn hàng.';
                 }
                 else if(item.status=='Transporting'){
                     item.status='Tiki đang vận chuyển đơn hàng.'

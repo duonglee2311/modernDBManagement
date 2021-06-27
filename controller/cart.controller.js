@@ -1,69 +1,64 @@
 const cartModel = require('../model/cart.model')
 module.exports={
     getCart: async(req,res)=>{
+        /**
+         * Lấy thông tin về user từ yêu cầu
+         * thực hiện lấy thông tin cart và kiểm tra cart có tồn tại
+         * Nếu chưa tồn tại thì trả về false để thông báo
+         * Đã có thì hiển thị giỏ hàng
+         */
         let userID = req.query.userID;
-        let carts=await cartModel.showCart(userID);
-        console.log('show: ',carts);
         let sumtotal = 0;
-        for (i = 0; i< carts.length; i++){
-            sumtotal = sumtotal + carts[i].subTotal;
+        let carts=await cartModel.showCart(userID);
+        if(carts!=-1){
+            for (i = 0; i< carts.length; i++){
+                sumtotal = sumtotal + carts[i].subTotal;
+            }            
+        }else{
+            carts=false;
         }
-        console.log(sumtotal);
         res.render("vwCart/Cart",{cart: carts, sum: sumtotal});
-        //res.send("OK")
     },
     addCart: async(req,res)=>{
         //Input: nhận vào thông tin sản phẩm: productID,name, image, price,quatity
         // - thông tin user: userID
         // Kiểm tra sản phẩm có tồn tại trong giỏ chưa
-        //- chưa thì thêm vào ds giỏ và thêm vào detail ds giỏ hàng
-        // -Có rồi:
-        //- cập nhật số lượng tại detail ds giỏ hàng
-       let userID=req.session.user.userID;
-       let productID=req.query.productID;
-       let image = req.query.image;
-       let price = req.query.price;
-       let sellerID = req.query.sellerID;
-       let productName = req.query.productName;
-       let quantity = 1;
-       let sellerName = req.query.sellerName;
-        let detail = {name:productName, image:image, price:price, sellerID:sellerID, quantity: quantity, sellerName: sellerName};
-        let result = await cartModel.addCart(userID, productID, detail);
-        if(result === "OK"){
-            // alert("Thêm sản phẩm vào giỏ hàng thành công!");
-            console.log("them thanh cog");
+        //- chưa có thì thêm vào ds giỏ và thêm vào detail ds giỏ hàng
+        //-Có rồi:
+        // cập nhật số lượng tại detail ds giỏ hàng
+        let userID=req.session.user.userID;
+        let productID=req.query.productID;
+        let image = req.query.image;
+        let price = req.query.price;
+        let sellerID = req.query.sellerID;
+        let productName = req.query.productName;
+        let sellerName = req.query.sellerName;
+        let detail = {name:productName, image:image, price:price, sellerID:sellerID, quantity: 1, sellerName: sellerName};
+        let isAddCart = await cartModel.addCart(userID, productID, detail);
+        if(isAddCart == "OK"){
             res.redirect('back');
         }
-    //    let incrValue=req.params.value;
-    //    let detail={ name: "sách1", image: "https://i.imgur.com/qqBRWD5.jpg", quantity: 2,price:23000, idSeller: 369, nameSeller: "duong" };
-        //Thêm sản phẩm
-        // console.log("thêm: ",await cartModel.addCart(userid,productid,detail));
-        // console.log('show: ',await cartModel.showCart(userid));
-        //done: trả về OK
-        //fail: trả về 0
-        // if fail
-        // update sản phẩm
-        // res.render("vwCart/Cart")
+        else{
+            console.error("didn't complete add product into cart");
+            res.redirect('back');
+        }
     },
     updateCart: async(req,res)=>{
+        /**
+         * Nhận thông tin về sản phẩm trong giỏ hàng của user
+         * kiểm tra yêu cầu cập nhật: tăng số lượng hay giảm
+         * thực hiện cập nhật
+         */
         let type = req.query.type;
         let userid = req.session.user.userID;
         productid = req.query.productID;
-        // console.log(type, userid, productid);
+        let value;
         if(type === "minus"){
-            console.log("update: ", await cartModel.updateCart(userid,productid,-1));
-            res.redirect('back');
+            value=-1;
         }else{
-            console.log("update: ", await cartModel.updateCart(userid,productid,1));
-            res.redirect('back');
+            value=1;
         }
-        
-        
-    },
-    deleteCart: async(req,res)=>{
-        res.send("OK");
-    },
-
-    
-
+        value=await cartModel.updateCart(userid,productid,value);
+        res.redirect('back');
+    }
 }

@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
-  <a class="navbar-brand" href="/">
+  <a class="navbar-brand" href="/seller">
     <i class="fa fa-home fa-lg"></i>
   </a>
-  <a class="navbar-brand" href="/">Tikin</a>
+  <a class="navbar-brand" href="/seller">Tikin</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -24,20 +24,9 @@
         </ul>
       </li>
     </ul>
-    {{!-- <form class="form-inline my-2 my-lg-0" method="POST" action="/search/category">
-      <input type="hidden" name="sortBy" value="Highest Rated">
-      <input class="form-control mr-sm-2" type="search" name="searchValue" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-        <i class="fa fa-search" aria-hidden="true"></i>
-        Search
-      </button>
-    </form> --}}
     <form id="frmLogout" method="POST" action="/account/logout"></form>
     <ul class="navbar-nav ml-auto">
       {{#if isUser}}
-      {{!-- <li class="nav-item">
-        <a class="nav-link" href="/cart?userID={{isUser.userID}}">Shopping Cart</span></a>
-      </li> --}}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
@@ -70,7 +59,6 @@
         </a>
       </li>
       {{/if}}
-
     </ul>
   </div>
 </nav>

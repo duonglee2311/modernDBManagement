@@ -5,12 +5,12 @@ module.exports={
     //GET: /order/checkout
     getcheckout: async(req, res)=>{
         let user = await userModel.getOneUser(req.session.user.userID);
-        // console.log(user);
-        res.render("vwCart/Checkout", {user :user[0]});
+        console.log(user);
+        res.render("vwOrder/Checkout", {user :user[0]});
     },
+    //POST: /order/checkout
     setCheckout: async(req,res)=>{
-        let userid=req.session.user.userID;// lấy userID redis session
-        console.log(req.body);
+        let userid=req.session.user.userID;
         await orderModel.setOrder(userid,req.body);
         res.redirect('/order');
     },
@@ -21,9 +21,7 @@ module.exports={
             res.render("vwOrder/Order_buyer",{listOrder: listOrder});
         }
         else{ //GET: /order?id=1
-            console.log(req.query.id);
             let listOrder=await orderModel.getOrderDetail(req.query.id);
-            console.log("list:",listOrder)
             res.render("vwOrder/Order_detail",{
                 orderInfo: listOrder.orderInfo[0],
                 delivery: listOrder.delivery,
@@ -31,9 +29,7 @@ module.exports={
             })
         }
     },
-    
-    
-
+    // GET: /
     getOrderSaler: async(req, res)=>{
         //GET: /order/edit?id=1
         if(req.query.id === undefined){
@@ -45,9 +41,7 @@ module.exports={
         }
         //GET: /order/edit
         else{
-            console.log('vo day')
             let listOrder=await orderModel.getOrderDetail(req.query.id);
-            console.log("o day",listOrder)
             res.render("vwOrder/Order_saler_edit",{
                 orderInfo: listOrder.orderInfo[0],
                 delivery: listOrder.delivery,
@@ -58,7 +52,6 @@ module.exports={
     },
     setDelivery: async(req,res)=>{
         if(!req.query.id || !req.query.status){
-            console.log('tao thong bao o day');
             res.redirect('back');
         }
         let status;

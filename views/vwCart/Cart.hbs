@@ -212,6 +212,7 @@ ul {
             <div class="col-lg-10 offset-lg-1">
                 <div class="cart_container">
                     <div class="cart_title">Giỏ hàng</div>
+                    {{#if cart}}
                     <div class="cart_items">
                         <ul class="cart_list">
                             {{#each cart}}
@@ -247,6 +248,11 @@ ul {
                             {{/each}}
                         </ul>
                     </div>
+                    {{else}}
+                        <dir>
+                            <h3>Không có sản phẩm</h3>
+                        </dir>
+                    {{/if}}
                     <div class="order_total">
                         <div class="order_total_content text-md-right">
                             <div class="order_total_title">Tổng hóa đơn:</div>
@@ -255,8 +261,9 @@ ul {
                     </div>
                     <div class="cart_buttons"> 
                         <a type="button" class="button cart_button_clear" href="/" style="text-decoration: none;;">Tiếp tục mua sắm</a> 
-                        {{!-- <a type="button" class="btn btn-secondary btn-lg cart_button_checkout" href="/cart/update" style="text-decoration: none;;">Cập nhật</a> --}}
+                        {{#if cart}}
                         <a type="button" class="btn btn-primary btn-lg cart_button_checkout" href="/order/checkout" style="text-decoration: none;;">Đặt hàng</a>
+                        {{/if}}
                     </div>
                 </div>
             </div>

@@ -30,10 +30,12 @@ module.exports={
        try {
            //Tạo node buyer
            // buyerValue là Object: thông tin đặt hàng có chứa cả id của User
+           console.log('buerValue',buyerValue);
            let paymentType=buyerValue.paymentType;
            let stringBuyer=`{userID: "${buyerID}", email:"${buyerValue.email}"}`;
+        //    console.log('buyer',stringBuyer)
            let isSuccess= (await db.mergeNode(buyerNode,stringBuyer)).summary.counters._stats.nodesCreated;
-           console.log("buyer: ",isSuccess)
+        //    console.log("buyer: ",isSuccess)
            //Tạo node order
            /**
             * load dữ liệu cart từ redis lên
@@ -41,29 +43,28 @@ module.exports={
             * tạo node order: orderDate, total, name: productname[0]+ và n-1 sản phẩm
             */
            let product= await cartModel.showCart(buyerID);
-           console.log("productlist",product)
            let totalAmount=0; 
-           orderName=product.length==1? product[0].name: product[0].name+' và' +product.length-1+' sản phẩm khác';
+           console.log('product:',product)
+           orderName=product.length==1? product[0].name: (product[0].name+' và ' +(product.length-1)+' sản phẩm khác');
            product.forEach(element => {
                totalAmount+=parseFloat(element.price)*parseFloat(element.quantity);
            });
+           console.log(product.length);
+           console.log(product[0].name);
+           console.log('orderName',orderName);
            console.log('totalAmount:',totalAmount);
            let orderDate=Date.now();
            let orderId=`${buyerID}`+orderDate;
            orderValue=`{orderId: "${orderId}",orderName: "${orderName}", orderDate: "${orderDate}", firstName: "${buyerValue.firstName}", lastName: "${buyerValue.lastName}", phoneNumber: "${buyerValue.phoneNumber}",address: "${buyerValue.address}",totalAmount: "${totalAmount}",currentStatus:"Processing"}`;
            isSuccess= (await db.createNode(orderNode,orderValue)).summary.counters._stats.nodesCreated;
-           console.log("orderNode",isSuccess);
     
            //tạo relationship giữa buyer và order
            isSuccess= (await db.createRelationship(orderNode,orderValue,Order_R_Buyr,-1,buyerNode,stringBuyer)).summary.counters._stats.relationshipsCreated;
-           console.log("relationship: ",isSuccess)
            //tạo relationship giữa delivery: status="Process" với order
            let relationshipValue='{delDatetime: "'+Date.now()+'"}'
            isSuccess=(await db.createRelationship(deliveryNode,'{name: "Processing"}',Order_R_delivery,relationshipValue,orderNode,orderValue)).summary.counters._stats.relationshipsCreated;
-           console.log("Order_R_delivery",isSuccess);
            //tạo relationship giữa order và payment
            isSuccess=(await db.createRelationship(paymentNode,'{type: "'+paymentType+'"}',Order_R_payment,-1,orderNode,orderValue)).summary.counters._stats.relationshipsCreated;
-           console.log("Order_R_payment",isSuccess);
            //loop:
            //Tạo product
            //Tạo seller
@@ -75,24 +76,17 @@ module.exports={
                let productValue=`{id: "${element.id}",name: "${element.name}",image:"${element.image}",price:"${element.price}"}`;
             //    console.log(productValue);
                isSuccess= (await db.mergeNode(productNode,productValue)).summary.counters._stats.nodesCreated;
-               console.log('product',isSuccess);
                // Tạo seller
-               console.log("=======");
-               console.log(element);
-               console.log("=======");
                let sellerValue=`{id: "${element.sellerID}", name: "${element.sellerName}"}`;
                isSuccess= (await db.mergeNode(sellerNode,sellerValue)).summary.counters._stats.nodesCreated;
-               console.log('seller:', isSuccess);
                //Tạo reelationship giữa product và seller
                isSuccess=(await db.createRelationship(sellerNode,sellerValue,product_R_Seller,-1,productNode,productValue)).summary.counters._stats.relationshipsCreated;
-               console.log('product_R_seller1',isSuccess);
                //Tạo relationship giữa product và order
                relationshipValue= '{number: "'+element.quantity+'"}';
                isSuccess=(await db.createRelationship(productNode,productValue,product_R_Order,relationshipValue,orderNode,orderValue)).summary.counters._stats.relationshipsCreated;
-               console.log('product_R_Order',isSuccess);
            });
             // Xoá cart trong redis
-            console.log("delete cart in redis",await cartModel.deleteCart(buyerID));
+            await cartModel.deleteCart(buyerID);
             return 1;
        } catch (error) {
            console.log('Error at: /order/setOrder', error);
@@ -140,7 +134,6 @@ module.exports={
             results= await db.matchNode(node, expression,returnValue);
             orderHeader= getResult(results);
             // orderHeader[0].currentStatus= orderHeader[0].currentStatus=="Processing"? true: false;
-            console.log('orderHeader',orderHeader);
             node=`(o:${orderNode})-[de:${Order_R_delivery}]-(d:${deliveryNode})`;
             sort='de.delDatetime'
             returnValue=`o.orderId as orderId,de.delDatetime as dateOrder,d.name as status`;
@@ -162,7 +155,6 @@ module.exports={
                     item.status='Tiki đã tiếp nhận yêu cầu hủy đơn hàng'
                 }
             })
-            console.log('orderDelivery',orderDelivery);
             node=`(o:${orderNode})-[i:${product_R_Order}]-(p:${productNode})`;
             // sort='de.delDatetime'
             returnValue=`p.id as id,p.name as name,p.image as image, p.price as price, i.number as quantity`;
@@ -185,14 +177,13 @@ module.exports={
         }
     },
     async updateOrder(orderId,deliveryName){
-        console.log('model:',orderId,deliveryName)
+        let results;
         let valueDelivery,valueOrder,timeCreated; 
         valueDelivery=`{name: "${deliveryName}"}`;
         valueOrder=`{orderId: "${orderId}"}`;
         timeCreated='{delDatetime: "'+Date.now()+'"}';
-        let results=await db.createRelationship(orderNode,valueOrder,Order_R_delivery,timeCreated,deliveryNode,valueDelivery);
+        results=await db.createRelationship(orderNode,valueOrder,Order_R_delivery,timeCreated,deliveryNode,valueDelivery);
         results=await db.updateNode(orderNode,valueOrder,`p.currentStatus="${deliveryName}"`);
-        console.log('update:abc ',results);
         return 1;
     }
 };
